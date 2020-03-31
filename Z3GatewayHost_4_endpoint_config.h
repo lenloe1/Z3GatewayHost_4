@@ -17,22 +17,12 @@
 0x09, 0xAC, 0x2F /* 0,Default value: Green Power,gpp functionality */, \
 0xFF, 0xFF, 0xFF /* 3,Default value: Green Power,gpp active functionality */, \
 0x5A, 0x69, 0x67, 0x42, 0x65, 0x65, 0x41, 0x6C, 0x6C, 0x69, 0x61, 0x6E, 0x63, 0x65, 0x30, 0x39 /* 6,Default value: Green Power,gp link key */, \
-0xFF, 0xFF, 0xFF, 0xFF /* 22,Default value: Energy Management,Current Event ID */, \
-0xE7, 0xFF, 0xFF, 0xFF /* 26,Default value: Sub-GHz,sub-GHz page 28 channel mask (server) */, \
-0xE8, 0x00, 0x01, 0xFF /* 30,Default value: Sub-GHz,sub-GHz page 29 channel mask (server) */, \
-0xF7, 0xFF, 0xFF, 0xFF /* 34,Default value: Sub-GHz,sub-GHz page 30 channel mask (server) */, \
-0xFF, 0xFF, 0xFF, 0xFF /* 38,Default value: Sub-GHz,sub-GHz page 31 channel mask (server) */, \
   }
 #else // ! BIGENDIAN_CPU
 #define GENERATED_DEFAULTS { \
 0x2F, 0xAC, 0x09 /* 0,Default value: Green Power,gpp functionality */, \
 0xFF, 0xFF, 0xFF /* 3,Default value: Green Power,gpp active functionality */, \
 0x5A, 0x69, 0x67, 0x42, 0x65, 0x65, 0x41, 0x6C, 0x6C, 0x69, 0x61, 0x6E, 0x63, 0x65, 0x30, 0x39 /* 6,Default value: Green Power,gp link key */, \
-0xFF, 0xFF, 0xFF, 0xFF /* 22,Default value: Energy Management,Current Event ID */, \
-0xFF, 0xFF, 0xFF, 0xE7 /* 26,Default value: Sub-GHz,sub-GHz page 28 channel mask (server) */, \
-0xFF, 0x01, 0x00, 0xE8 /* 30,Default value: Sub-GHz,sub-GHz page 29 channel mask (server) */, \
-0xFF, 0xFF, 0xFF, 0xF7 /* 34,Default value: Sub-GHz,sub-GHz page 30 channel mask (server) */, \
-0xFF, 0xFF, 0xFF, 0xFF /* 38,Default value: Sub-GHz,sub-GHz page 31 channel mask (server) */, \
   }
 #endif // BIGENDIAN_CPU
 
@@ -74,90 +64,49 @@
     { 0x0022, ZCL_SECURITY_KEY_ATTRIBUTE_TYPE, 16, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)&(generatedDefaults[6]) } }, /* 30 / Green Power / gp link key*/\
     { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 31 / Green Power / cluster revision*/\
     { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT|ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)0x0001 } }, /* 32 / Keep-Alive / cluster revision*/\
-    { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)1 } }, /* 33 / Keep-Alive / Keep-Alive Base*/\
-    { 0x0001, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)60 } }, /* 34 / Keep-Alive / Keep-Alive Jitter*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)0x0001 } }, /* 35 / Keep-Alive / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 36 / Color Control / cluster revision*/\
-    { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 37 / Color Control / current hue*/\
-    { 0x0001, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 38 / Color Control / current saturation*/\
-    { 0x0002, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000 } }, /* 39 / Color Control / remaining time*/\
-    { 0x0003, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x616B } }, /* 40 / Color Control / current x*/\
-    { 0x0004, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x607D } }, /* 41 / Color Control / current y*/\
-    { 0x0007, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x00FA } }, /* 42 / Color Control / color temperature*/\
-    { 0x0008, ZCL_ENUM8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x01 } }, /* 43 / Color Control / color mode*/\
-    { 0x000F, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x00 } }, /* 44 / Color Control / color control options*/\
-    { 0x0010, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0 } }, /* 45 / Color Control / number of primaries*/\
-    { 0x4001, ZCL_ENUM8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x01 } }, /* 46 / Color Control / enhanced color mode*/\
-    { 0x400A, ZCL_BITMAP16_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0019 } }, /* 47 / Color Control / color capabilities*/\
-    { 0x400B, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000 } }, /* 48 / Color Control / color temp physical min*/\
-    { 0x400C, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0xFEFF } }, /* 49 / Color Control / color temp physical max*/\
-    { 0x400D, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000UL } }, /* 50 / Color Control / couple color temp to level min-mireds*/\
-    { 0x4010, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x0000UL } }, /* 51 / Color Control / start up color temperature mireds*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 52 / Color Control / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 53 / Illuminance Measurement / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 54 / Temperature Measurement / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 55 / Relative Humidity Measurement / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 56 / Occupancy Sensing / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 57 / IAS Zone / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 58 / Price / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 59 / Price / cluster revision*/\
-    { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 60 / Demand Response and Load Control / utility enrollment group*/\
-    { 0x0001, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x1E } }, /* 61 / Demand Response and Load Control / start randomization minutes*/\
-    { 0x0002, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 62 / Demand Response and Load Control / duration randomization minutes*/\
-    { 0x0003, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0000UL } }, /* 63 / Demand Response and Load Control / device class value*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 64 / Demand Response and Load Control / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 65 / Demand Response and Load Control / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 66 / Simple Metering / cluster revision*/\
-    { 0x0000, ZCL_INT48U_ATTRIBUTE_TYPE, 6, (0x00), { NULL } }, /* 67 / Simple Metering / current summation delivered*/\
-    { 0x0200, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 68 / Simple Metering / status*/\
-    { 0x0300, ZCL_ENUM8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 69 / Simple Metering / unit of measure*/\
-    { 0x0303, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 70 / Simple Metering / summation formatting*/\
-    { 0x0306, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 71 / Simple Metering / metering device type*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 72 / Simple Metering / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 73 / Messaging / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 74 / Messaging / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 75 / Tunneling / cluster revision*/\
-    { 0x0000, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0xFFFF } }, /* 76 / Tunneling / close tunnel timeout*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 77 / Tunneling / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 78 / Prepayment / cluster revision*/\
-    { 0x0000, ZCL_BITMAP16_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000 } }, /* 79 / Prepayment / payment control configuration*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 80 / Prepayment / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 81 / Energy Management / cluster revision*/\
-    { 0x0000, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 82 / Energy Management / Load Control State*/\
-    { 0x0001, ZCL_INT32U_ATTRIBUTE_TYPE, 4, (0x00), { (uint8_t*)&(generatedDefaults[22]) } }, /* 83 / Energy Management / Current Event ID*/\
-    { 0x0002, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 84 / Energy Management / Current Event Status*/\
-    { 0x0003, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x00 } }, /* 85 / Energy Management / Conformance Level*/\
-    { 0x0004, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x0000UL } }, /* 86 / Energy Management / Minimum Off Time*/\
-    { 0x0005, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x0000UL } }, /* 87 / Energy Management / Minimum On Time*/\
-    { 0x0006, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x0000UL } }, /* 88 / Energy Management / Minimum Cycle Period*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 89 / Energy Management / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 90 / Calendar / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 91 / Calendar / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 92 / Device Management / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 93 / Device Management / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 94 / Events / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 95 / Events / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 96 / MDU Pairing / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 97 / MDU Pairing / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT|ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)0x0001 } }, /* 98 / Sub-GHz / cluster revision*/\
-    { 0x0000, ZCL_BITMAP32_ATTRIBUTE_TYPE, 4, (ATTRIBUTE_MASK_SINGLETON), { NULL } }, /* 99 / Sub-GHz / sub-GHz channel change (server)*/\
-    { 0x0001, ZCL_BITMAP32_ATTRIBUTE_TYPE, 4, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)&(generatedDefaults[26]) } }, /* 100 / Sub-GHz / sub-GHz page 28 channel mask (server)*/\
-    { 0x0002, ZCL_BITMAP32_ATTRIBUTE_TYPE, 4, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)&(generatedDefaults[30]) } }, /* 101 / Sub-GHz / sub-GHz page 29 channel mask (server)*/\
-    { 0x0003, ZCL_BITMAP32_ATTRIBUTE_TYPE, 4, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)&(generatedDefaults[34]) } }, /* 102 / Sub-GHz / sub-GHz page 30 channel mask (server)*/\
-    { 0x0004, ZCL_BITMAP32_ATTRIBUTE_TYPE, 4, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)&(generatedDefaults[38]) } }, /* 103 / Sub-GHz / sub-GHz page 31 channel mask (server)*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)0x0001 } }, /* 104 / Sub-GHz / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 105 / Meter Identification / cluster revision*/\
-    { 0x0000, ZCL_CHAR_STRING_ATTRIBUTE_TYPE, 17, (0x00), { NULL } }, /* 106 / Meter Identification / company name*/\
-    { 0x0001, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000UL } }, /* 107 / Meter Identification / meter type id*/\
-    { 0x0004, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000UL } }, /* 108 / Meter Identification / data quality id*/\
-    { 0x000C, ZCL_CHAR_STRING_ATTRIBUTE_TYPE, 17, (0x00), { NULL } }, /* 109 / Meter Identification / pod*/\
-    { 0x000D, ZCL_INT24S_ATTRIBUTE_TYPE, 3, (0x00), { NULL } }, /* 110 / Meter Identification / available power*/\
-    { 0x000E, ZCL_INT24S_ATTRIBUTE_TYPE, 3, (0x00), { NULL } }, /* 111 / Meter Identification / power threshold*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 112 / Meter Identification / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 113 / Appliance Statistics / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 114 / Electrical Measurement / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 115 / Configuration Cluster / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 116 / MFGLIB Cluster / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 33 / Color Control / cluster revision*/\
+    { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 34 / Color Control / current hue*/\
+    { 0x0001, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x00 } }, /* 35 / Color Control / current saturation*/\
+    { 0x0002, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000 } }, /* 36 / Color Control / remaining time*/\
+    { 0x0003, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x616B } }, /* 37 / Color Control / current x*/\
+    { 0x0004, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x607D } }, /* 38 / Color Control / current y*/\
+    { 0x0007, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x00FA } }, /* 39 / Color Control / color temperature*/\
+    { 0x0008, ZCL_ENUM8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x01 } }, /* 40 / Color Control / color mode*/\
+    { 0x000F, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x00 } }, /* 41 / Color Control / color control options*/\
+    { 0x0010, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0 } }, /* 42 / Color Control / number of primaries*/\
+    { 0x4001, ZCL_ENUM8_ATTRIBUTE_TYPE, 1, (0x00), { (uint8_t*)0x01 } }, /* 43 / Color Control / enhanced color mode*/\
+    { 0x400A, ZCL_BITMAP16_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0019 } }, /* 44 / Color Control / color capabilities*/\
+    { 0x400B, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000 } }, /* 45 / Color Control / color temp physical min*/\
+    { 0x400C, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0xFEFF } }, /* 46 / Color Control / color temp physical max*/\
+    { 0x400D, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0000UL } }, /* 47 / Color Control / couple color temp to level min-mireds*/\
+    { 0x4010, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE), { (uint8_t*)0x0000UL } }, /* 48 / Color Control / start up color temperature mireds*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 49 / Color Control / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 50 / Illuminance Measurement / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 51 / Temperature Measurement / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 52 / Relative Humidity Measurement / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 53 / Occupancy Sensing / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 54 / IAS Zone / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 55 / Price / cluster revision*/\
+    { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 56 / Demand Response and Load Control / utility enrollment group*/\
+    { 0x0001, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x1E } }, /* 57 / Demand Response and Load Control / start randomization minutes*/\
+    { 0x0002, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 58 / Demand Response and Load Control / duration randomization minutes*/\
+    { 0x0003, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0000UL } }, /* 59 / Demand Response and Load Control / device class value*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 60 / Demand Response and Load Control / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 61 / Simple Metering / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 62 / Messaging / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 63 / Tunneling / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 64 / Prepayment / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 65 / Energy Management / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 66 / Calendar / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 67 / Device Management / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 68 / Events / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 69 / MDU Pairing / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT|ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)0x0001 } }, /* 70 / Sub-GHz / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 71 / Meter Identification / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 72 / Appliance Statistics / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 73 / Electrical Measurement / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 74 / Configuration Cluster / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 75 / MFGLIB Cluster / cluster revision*/\
   }
 
 
@@ -190,59 +139,45 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
     { 0x001A, (EmberAfAttributeMetadata*)&(generatedAttributes[19]), 6, 7, (CLUSTER_MASK_SERVER), NULL,  },    \
     { 0x0020, (EmberAfAttributeMetadata*)&(generatedAttributes[25]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0025, (EmberAfAttributeMetadata*)&(generatedAttributes[32]), 1, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0025, (EmberAfAttributeMetadata*)&(generatedAttributes[33]), 3, 0, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0300, (EmberAfAttributeMetadata*)&(generatedAttributes[36]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0300, (EmberAfAttributeMetadata*)&(generatedAttributes[37]), 16, 26, (CLUSTER_MASK_SERVER| CLUSTER_MASK_INIT_FUNCTION), emberAfFuncArrayColorControlClusterServer, },    \
-    { 0x0400, (EmberAfAttributeMetadata*)&(generatedAttributes[53]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0402, (EmberAfAttributeMetadata*)&(generatedAttributes[54]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0405, (EmberAfAttributeMetadata*)&(generatedAttributes[55]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0406, (EmberAfAttributeMetadata*)&(generatedAttributes[56]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0500, (EmberAfAttributeMetadata*)&(generatedAttributes[57]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_INIT_FUNCTION), emberAfFuncArrayIasZoneClusterClient, },    \
-    { 0x0700, (EmberAfAttributeMetadata*)&(generatedAttributes[58]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0700, (EmberAfAttributeMetadata*)&(generatedAttributes[59]), 1, 2, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0701, (EmberAfAttributeMetadata*)&(generatedAttributes[60]), 5, 7, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0701, (EmberAfAttributeMetadata*)&(generatedAttributes[65]), 1, 2, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0702, (EmberAfAttributeMetadata*)&(generatedAttributes[66]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_DEFAULT_RESPONSE_FUNCTION), emberAfFuncArraySimpleMeteringClusterClient, },    \
-    { 0x0702, (EmberAfAttributeMetadata*)&(generatedAttributes[67]), 6, 12, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0703, (EmberAfAttributeMetadata*)&(generatedAttributes[73]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0703, (EmberAfAttributeMetadata*)&(generatedAttributes[74]), 1, 2, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0704, (EmberAfAttributeMetadata*)&(generatedAttributes[75]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0704, (EmberAfAttributeMetadata*)&(generatedAttributes[76]), 2, 4, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0705, (EmberAfAttributeMetadata*)&(generatedAttributes[78]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0705, (EmberAfAttributeMetadata*)&(generatedAttributes[79]), 2, 4, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0706, (EmberAfAttributeMetadata*)&(generatedAttributes[81]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0706, (EmberAfAttributeMetadata*)&(generatedAttributes[82]), 8, 15, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0707, (EmberAfAttributeMetadata*)&(generatedAttributes[90]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0707, (EmberAfAttributeMetadata*)&(generatedAttributes[91]), 1, 2, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0708, (EmberAfAttributeMetadata*)&(generatedAttributes[92]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0708, (EmberAfAttributeMetadata*)&(generatedAttributes[93]), 1, 2, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0709, (EmberAfAttributeMetadata*)&(generatedAttributes[94]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0709, (EmberAfAttributeMetadata*)&(generatedAttributes[95]), 1, 2, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x070A, (EmberAfAttributeMetadata*)&(generatedAttributes[96]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x070A, (EmberAfAttributeMetadata*)&(generatedAttributes[97]), 1, 2, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x070B, (EmberAfAttributeMetadata*)&(generatedAttributes[98]), 1, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x070B, (EmberAfAttributeMetadata*)&(generatedAttributes[99]), 6, 0, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0B01, (EmberAfAttributeMetadata*)&(generatedAttributes[105]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0B01, (EmberAfAttributeMetadata*)&(generatedAttributes[106]), 7, 46, (CLUSTER_MASK_SERVER), NULL,  },    \
-    { 0x0B03, (EmberAfAttributeMetadata*)&(generatedAttributes[113]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0B04, (EmberAfAttributeMetadata*)&(generatedAttributes[114]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0xFC01, (EmberAfAttributeMetadata*)&(generatedAttributes[115]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0xFC02, (EmberAfAttributeMetadata*)&(generatedAttributes[116]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0300, (EmberAfAttributeMetadata*)&(generatedAttributes[33]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0300, (EmberAfAttributeMetadata*)&(generatedAttributes[34]), 16, 26, (CLUSTER_MASK_SERVER| CLUSTER_MASK_INIT_FUNCTION), emberAfFuncArrayColorControlClusterServer, },    \
+    { 0x0400, (EmberAfAttributeMetadata*)&(generatedAttributes[50]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0402, (EmberAfAttributeMetadata*)&(generatedAttributes[51]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0405, (EmberAfAttributeMetadata*)&(generatedAttributes[52]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0406, (EmberAfAttributeMetadata*)&(generatedAttributes[53]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0500, (EmberAfAttributeMetadata*)&(generatedAttributes[54]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_INIT_FUNCTION), emberAfFuncArrayIasZoneClusterClient, },    \
+    { 0x0700, (EmberAfAttributeMetadata*)&(generatedAttributes[55]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0701, (EmberAfAttributeMetadata*)&(generatedAttributes[56]), 5, 7, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0702, (EmberAfAttributeMetadata*)&(generatedAttributes[61]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_DEFAULT_RESPONSE_FUNCTION), emberAfFuncArraySimpleMeteringClusterClient, },    \
+    { 0x0703, (EmberAfAttributeMetadata*)&(generatedAttributes[62]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0704, (EmberAfAttributeMetadata*)&(generatedAttributes[63]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0705, (EmberAfAttributeMetadata*)&(generatedAttributes[64]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0706, (EmberAfAttributeMetadata*)&(generatedAttributes[65]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0707, (EmberAfAttributeMetadata*)&(generatedAttributes[66]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0708, (EmberAfAttributeMetadata*)&(generatedAttributes[67]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0709, (EmberAfAttributeMetadata*)&(generatedAttributes[68]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x070A, (EmberAfAttributeMetadata*)&(generatedAttributes[69]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x070B, (EmberAfAttributeMetadata*)&(generatedAttributes[70]), 1, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0B01, (EmberAfAttributeMetadata*)&(generatedAttributes[71]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0B03, (EmberAfAttributeMetadata*)&(generatedAttributes[72]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0B04, (EmberAfAttributeMetadata*)&(generatedAttributes[73]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0xFC01, (EmberAfAttributeMetadata*)&(generatedAttributes[74]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0xFC02, (EmberAfAttributeMetadata*)&(generatedAttributes[75]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0021, (EmberAfAttributeMetadata*)&(generatedAttributes[26]), 6, 27, (CLUSTER_MASK_CLIENT), NULL,  },    \
   }
 
 
 // Endpoint types
 #define GENERATED_ENDPOINT_TYPES {        \
-    { (EmberAfCluster*)&(generatedClusters[0]), 53, 201 }, \
-    { (EmberAfCluster*)&(generatedClusters[53]), 1, 27 }, \
+    { (EmberAfCluster*)&(generatedClusters[0]), 39, 106 }, \
+    { (EmberAfCluster*)&(generatedClusters[39]), 1, 27 }, \
   }
 
 
 // Cluster manufacturer codes
 #define GENERATED_CLUSTER_MANUFACTURER_CODES {      \
-{0x0033, 0x1002}, \
-{0x0034, 0x1002}, \
+{0x0025, 0x1002}, \
+{0x0026, 0x1002}, \
   }
 #define GENERATED_CLUSTER_MANUFACTURER_CODE_COUNT (2)
 
@@ -254,12 +189,12 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
 
 
 // Largest attribute size is needed for various buffers
-#define ATTRIBUTE_LARGEST (17)
+#define ATTRIBUTE_LARGEST (16)
 // Total size of singleton attributes
-#define ATTRIBUTE_SINGLETONS_SIZE (44)
+#define ATTRIBUTE_SINGLETONS_SIZE (17)
 
 // Total size of attribute storage
-#define ATTRIBUTE_MAX_SIZE 228
+#define ATTRIBUTE_MAX_SIZE 133
 
 // Array of endpoints that are supported
 #define FIXED_ENDPOINT_ARRAY { 1, 242 }
@@ -437,41 +372,25 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
     { 0x0501, 0x04, COMMAND_MASK_INCOMING_SERVER }, /* IAS ACE / Panic */ \
     { 0x0501, 0x05, COMMAND_MASK_INCOMING_SERVER }, /* IAS ACE / GetZoneIdMap */ \
     { 0x0501, 0x06, COMMAND_MASK_INCOMING_SERVER }, /* IAS ACE / GetZoneInformation */ \
-    { 0x0700, 0x00, COMMAND_MASK_OUTGOING_SERVER }, /* Price / PublishPrice */ \
     { 0x0700, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Price / GetCurrentPrice */ \
     { 0x0700, 0x02, COMMAND_MASK_OUTGOING_CLIENT }, /* Price / PriceAcknowledgement */ \
-    { 0x0701, 0x00, COMMAND_MASK_OUTGOING_SERVER }, /* Demand Response and Load Control / LoadControlEvent */ \
     { 0x0701, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Demand Response and Load Control / ReportEventStatus */ \
-    { 0x0701, 0x01, COMMAND_MASK_OUTGOING_SERVER }, /* Demand Response and Load Control / CancelLoadControlEvent */ \
     { 0x0701, 0x01, COMMAND_MASK_OUTGOING_CLIENT }, /* Demand Response and Load Control / GetScheduledEvents */ \
-    { 0x0701, 0x02, COMMAND_MASK_OUTGOING_SERVER }, /* Demand Response and Load Control / CancelAllLoadControlEvents */ \
     { 0x0702, 0x00, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / GetProfileResponse */ \
     { 0x0702, 0x01, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / RequestMirror */ \
     { 0x0702, 0x02, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / RemoveMirror */ \
     { 0x0702, 0x03, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / RequestFastPollModeResponse */ \
     { 0x0702, 0x0C, COMMAND_MASK_INCOMING_CLIENT }, /* Simple Metering / SupplyStatusResponse */ \
-    { 0x0703, 0x00, COMMAND_MASK_OUTGOING_SERVER }, /* Messaging / DisplayMessage */ \
     { 0x0703, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Messaging / GetLastMessage */ \
-    { 0x0703, 0x01, COMMAND_MASK_OUTGOING_SERVER }, /* Messaging / CancelMessage */ \
     { 0x0703, 0x01, COMMAND_MASK_OUTGOING_CLIENT }, /* Messaging / MessageConfirmation */ \
     { 0x0704, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Tunneling / RequestTunnel */ \
-    { 0x0704, 0x00, COMMAND_MASK_OUTGOING_SERVER }, /* Tunneling / RequestTunnelResponse */ \
     { 0x0704, 0x01, COMMAND_MASK_OUTGOING_CLIENT }, /* Tunneling / CloseTunnel */ \
-    { 0x0704, 0x01, COMMAND_MASK_OUTGOING_SERVER }, /* Tunneling / TransferDataServerToClient */ \
     { 0x0704, 0x02, COMMAND_MASK_OUTGOING_CLIENT }, /* Tunneling / TransferDataClientToServer */ \
-    { 0x0704, 0x02, COMMAND_MASK_OUTGOING_SERVER }, /* Tunneling / TransferDataErrorServerToClient */ \
     { 0x0704, 0x03, COMMAND_MASK_OUTGOING_CLIENT }, /* Tunneling / TransferDataErrorClientToServer */ \
-    { 0x0706, 0x00, COMMAND_MASK_OUTGOING_SERVER }, /* Energy Management / ReportEventStatus */ \
     { 0x0706, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Energy Management / ManageEvent */ \
-    { 0x0707, 0x00, COMMAND_MASK_OUTGOING_SERVER }, /* Calendar / PublishCalendar */ \
-    { 0x0707, 0x01, COMMAND_MASK_OUTGOING_SERVER }, /* Calendar / PublishDayProfile */ \
-    { 0x0707, 0x02, COMMAND_MASK_OUTGOING_SERVER }, /* Calendar / PublishWeekProfile */ \
-    { 0x0707, 0x03, COMMAND_MASK_OUTGOING_SERVER }, /* Calendar / PublishSeasons */ \
-    { 0x0707, 0x04, COMMAND_MASK_OUTGOING_SERVER }, /* Calendar / PublishSpecialDays */ \
     { 0x0707, 0x04, COMMAND_MASK_OUTGOING_CLIENT }, /* Calendar / GetSpecialDays */ \
     { 0x0707, 0x05, COMMAND_MASK_OUTGOING_CLIENT }, /* Calendar / GetCalendarCancellation */ \
     { 0x070A, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* MDU Pairing / PairingRequest */ \
-    { 0x070B, 0x00, COMMAND_MASK_OUTGOING_SERVER }, /* Sub-GHz / SuspendZclMessages */ \
     { 0x070B, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Sub-GHz / GetSuspendZclMessagesStatus */ \
     { 0x0B03, 0x00, COMMAND_MASK_OUTGOING_CLIENT }, /* Appliance Statistics / LogRequest */ \
     { 0x0B03, 0x01, COMMAND_MASK_OUTGOING_CLIENT }, /* Appliance Statistics / LogQueueRequest */ \
@@ -483,17 +402,17 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
     { 0xFC02, 0x01, COMMAND_MASK_OUTGOING_CLIENT | COMMAND_MASK_MANUFACTURER_SPECIFIC }, /* MFGLIB Cluster / tone */ \
     { 0xFC02, 0x02, COMMAND_MASK_OUTGOING_CLIENT | COMMAND_MASK_MANUFACTURER_SPECIFIC }, /* MFGLIB Cluster / rxMode */ \
   }
-#define EMBER_AF_GENERATED_COMMAND_COUNT (124)
+#define EMBER_AF_GENERATED_COMMAND_COUNT (108)
 
 // Command manufacturer codes
 #define GENERATED_COMMAND_MANUFACTURER_CODES {      \
-{0x0075, 0x1002}, \
-{0x0076, 0x1002}, \
-{0x0077, 0x1002}, \
-{0x0078, 0x1002}, \
-{0x0079, 0x1002}, \
-{0x007A, 0x1002}, \
-{0x007B, 0x1002}, \
+{0x0065, 0x1002}, \
+{0x0066, 0x1002}, \
+{0x0067, 0x1002}, \
+{0x0068, 0x1002}, \
+{0x0069, 0x1002}, \
+{0x006A, 0x1002}, \
+{0x006B, 0x1002}, \
   }
 #define GENERATED_COMMAND_MANUFACTURER_CODE_COUNT (7)
 
