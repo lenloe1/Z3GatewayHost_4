@@ -175,50 +175,8 @@ EmberAfStatus emberAfClusterSpecificCommandParse(EmberAfClusterCommand *cmd)
     case ZCL_POWER_PROFILE_CLUSTER_ID:
       result = status(false, true, cmd->mfgSpecific);
       break;
-    case ZCL_KEEPALIVE_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
     case ZCL_COLOR_CONTROL_CLUSTER_ID:
       result = emberAfColorControlClusterServerCommandParse(cmd);
-      break;
-    case ZCL_PRICE_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_DEMAND_RESPONSE_LOAD_CONTROL_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_SIMPLE_METERING_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_MESSAGING_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_TUNNELING_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_PREPAYMENT_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_ENERGY_MANAGEMENT_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_CALENDAR_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_DEVICE_MANAGEMENT_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_EVENTS_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_MDU_PAIRING_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_SUB_GHZ_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
-      break;
-    case ZCL_METER_IDENTIFICATION_CLUSTER_ID:
-      result = status(false, true, cmd->mfgSpecific);
       break;
     default:
       // Unrecognized cluster ID, error status will apply.
