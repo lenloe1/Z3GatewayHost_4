@@ -85,28 +85,32 @@
     { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 51 / Temperature Measurement / cluster revision*/\
     { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 52 / Relative Humidity Measurement / cluster revision*/\
     { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 53 / Occupancy Sensing / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 54 / IAS Zone / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 55 / Price / cluster revision*/\
-    { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 56 / Demand Response and Load Control / utility enrollment group*/\
-    { 0x0001, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x1E } }, /* 57 / Demand Response and Load Control / start randomization minutes*/\
-    { 0x0002, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 58 / Demand Response and Load Control / duration randomization minutes*/\
-    { 0x0003, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0000UL } }, /* 59 / Demand Response and Load Control / device class value*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 60 / Demand Response and Load Control / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 61 / Simple Metering / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 62 / Messaging / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 63 / Tunneling / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 64 / Prepayment / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 65 / Energy Management / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 66 / Calendar / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 67 / Device Management / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 68 / Events / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 69 / MDU Pairing / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT|ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)0x0001 } }, /* 70 / Sub-GHz / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 71 / Meter Identification / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 72 / Appliance Statistics / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 73 / Electrical Measurement / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 74 / Configuration Cluster / cluster revision*/\
-    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 75 / MFGLIB Cluster / cluster revision*/\
+    { 0x0000, ZCL_FLOAT_SINGLE_ATTRIBUTE_TYPE, 4, (0x00), { NULL } }, /* 54 / Sulfate Concentration Measurement / measured value*/\
+    { 0x0001, ZCL_FLOAT_SINGLE_ATTRIBUTE_TYPE, 4, (0x00), { NULL } }, /* 55 / Sulfate Concentration Measurement / min measured value*/\
+    { 0x0002, ZCL_FLOAT_SINGLE_ATTRIBUTE_TYPE, 4, (0x00), { NULL } }, /* 56 / Sulfate Concentration Measurement / max measured value*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (uint8_t*)0x0001 } }, /* 57 / Sulfate Concentration Measurement / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 58 / IAS Zone / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 59 / Price / cluster revision*/\
+    { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 60 / Demand Response and Load Control / utility enrollment group*/\
+    { 0x0001, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x1E } }, /* 61 / Demand Response and Load Control / start randomization minutes*/\
+    { 0x0002, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x00 } }, /* 62 / Demand Response and Load Control / duration randomization minutes*/\
+    { 0x0003, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE|ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0000UL } }, /* 63 / Demand Response and Load Control / device class value*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 64 / Demand Response and Load Control / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 65 / Simple Metering / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 66 / Messaging / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 67 / Tunneling / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 68 / Prepayment / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 69 / Energy Management / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 70 / Calendar / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 71 / Device Management / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 72 / Events / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 73 / MDU Pairing / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT|ATTRIBUTE_MASK_SINGLETON), { (uint8_t*)0x0001 } }, /* 74 / Sub-GHz / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 75 / Meter Identification / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 76 / Appliance Statistics / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 77 / Electrical Measurement / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 78 / Configuration Cluster / cluster revision*/\
+    { 0xFFFD, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_CLIENT), { (uint8_t*)0x0001 } }, /* 79 / MFGLIB Cluster / cluster revision*/\
   }
 
 
@@ -145,39 +149,40 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
     { 0x0402, (EmberAfAttributeMetadata*)&(generatedAttributes[51]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0405, (EmberAfAttributeMetadata*)&(generatedAttributes[52]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0406, (EmberAfAttributeMetadata*)&(generatedAttributes[53]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0500, (EmberAfAttributeMetadata*)&(generatedAttributes[54]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_INIT_FUNCTION), emberAfFuncArrayIasZoneClusterClient, },    \
-    { 0x0700, (EmberAfAttributeMetadata*)&(generatedAttributes[55]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0701, (EmberAfAttributeMetadata*)&(generatedAttributes[56]), 5, 7, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0702, (EmberAfAttributeMetadata*)&(generatedAttributes[61]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_DEFAULT_RESPONSE_FUNCTION), emberAfFuncArraySimpleMeteringClusterClient, },    \
-    { 0x0703, (EmberAfAttributeMetadata*)&(generatedAttributes[62]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0704, (EmberAfAttributeMetadata*)&(generatedAttributes[63]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0705, (EmberAfAttributeMetadata*)&(generatedAttributes[64]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0706, (EmberAfAttributeMetadata*)&(generatedAttributes[65]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0707, (EmberAfAttributeMetadata*)&(generatedAttributes[66]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0708, (EmberAfAttributeMetadata*)&(generatedAttributes[67]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0709, (EmberAfAttributeMetadata*)&(generatedAttributes[68]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x070A, (EmberAfAttributeMetadata*)&(generatedAttributes[69]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x070B, (EmberAfAttributeMetadata*)&(generatedAttributes[70]), 1, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0B01, (EmberAfAttributeMetadata*)&(generatedAttributes[71]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0B03, (EmberAfAttributeMetadata*)&(generatedAttributes[72]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0x0B04, (EmberAfAttributeMetadata*)&(generatedAttributes[73]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0xFC01, (EmberAfAttributeMetadata*)&(generatedAttributes[74]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
-    { 0xFC02, (EmberAfAttributeMetadata*)&(generatedAttributes[75]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0424, (EmberAfAttributeMetadata*)&(generatedAttributes[54]), 4, 14, (CLUSTER_MASK_SERVER), NULL,  },    \
+    { 0x0500, (EmberAfAttributeMetadata*)&(generatedAttributes[58]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_INIT_FUNCTION), emberAfFuncArrayIasZoneClusterClient, },    \
+    { 0x0700, (EmberAfAttributeMetadata*)&(generatedAttributes[59]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0701, (EmberAfAttributeMetadata*)&(generatedAttributes[60]), 5, 7, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0702, (EmberAfAttributeMetadata*)&(generatedAttributes[65]), 1, 2, (CLUSTER_MASK_CLIENT| CLUSTER_MASK_DEFAULT_RESPONSE_FUNCTION), emberAfFuncArraySimpleMeteringClusterClient, },    \
+    { 0x0703, (EmberAfAttributeMetadata*)&(generatedAttributes[66]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0704, (EmberAfAttributeMetadata*)&(generatedAttributes[67]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0705, (EmberAfAttributeMetadata*)&(generatedAttributes[68]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0706, (EmberAfAttributeMetadata*)&(generatedAttributes[69]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0707, (EmberAfAttributeMetadata*)&(generatedAttributes[70]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0708, (EmberAfAttributeMetadata*)&(generatedAttributes[71]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0709, (EmberAfAttributeMetadata*)&(generatedAttributes[72]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x070A, (EmberAfAttributeMetadata*)&(generatedAttributes[73]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x070B, (EmberAfAttributeMetadata*)&(generatedAttributes[74]), 1, 0, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0B01, (EmberAfAttributeMetadata*)&(generatedAttributes[75]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0B03, (EmberAfAttributeMetadata*)&(generatedAttributes[76]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0x0B04, (EmberAfAttributeMetadata*)&(generatedAttributes[77]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0xFC01, (EmberAfAttributeMetadata*)&(generatedAttributes[78]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
+    { 0xFC02, (EmberAfAttributeMetadata*)&(generatedAttributes[79]), 1, 2, (CLUSTER_MASK_CLIENT), NULL,  },    \
     { 0x0021, (EmberAfAttributeMetadata*)&(generatedAttributes[26]), 6, 27, (CLUSTER_MASK_CLIENT), NULL,  },    \
   }
 
 
 // Endpoint types
 #define GENERATED_ENDPOINT_TYPES {        \
-    { (EmberAfCluster*)&(generatedClusters[0]), 39, 106 }, \
-    { (EmberAfCluster*)&(generatedClusters[39]), 1, 27 }, \
+    { (EmberAfCluster*)&(generatedClusters[0]), 40, 120 }, \
+    { (EmberAfCluster*)&(generatedClusters[40]), 1, 27 }, \
   }
 
 
 // Cluster manufacturer codes
 #define GENERATED_CLUSTER_MANUFACTURER_CODES {      \
-{0x0025, 0x1002}, \
 {0x0026, 0x1002}, \
+{0x0027, 0x1002}, \
   }
 #define GENERATED_CLUSTER_MANUFACTURER_CODE_COUNT (2)
 
@@ -194,7 +199,7 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
 #define ATTRIBUTE_SINGLETONS_SIZE (17)
 
 // Total size of attribute storage
-#define ATTRIBUTE_MAX_SIZE 133
+#define ATTRIBUTE_MAX_SIZE 147
 
 // Array of endpoints that are supported
 #define FIXED_ENDPOINT_ARRAY { 1, 242 }
@@ -216,16 +221,24 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
 
 
 #define EMBER_AF_GENERATED_PLUGIN_INIT_FUNCTION_DECLARATIONS \
+  void emberAfPluginDeviceTableInitCallback(void); \
   void emberAfPluginTrustCenterNwkKeyUpdatePeriodicInitCallback(void); \
+  void emberAfPluginGatewayRelayMqttInitCallback(void); \
+  void emberAfPluginCommandRelayInitCallback(void); \
   void emberAfPluginGreenPowerClientInitCallback(void); \
   void emberAfPluginReportingInitCallback(void); \
+  void emberAfPluginTransportMqttInitCallback(void); \
   void emberAfPluginCountersInitCallback(void); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_INIT_FUNCTION_CALLS \
+  emberAfPluginDeviceTableInitCallback(); \
   emberAfPluginTrustCenterNwkKeyUpdatePeriodicInitCallback(); \
+  emberAfPluginGatewayRelayMqttInitCallback(); \
+  emberAfPluginCommandRelayInitCallback(); \
   emberAfPluginGreenPowerClientInitCallback(); \
   emberAfPluginReportingInitCallback(); \
+  emberAfPluginTransportMqttInitCallback(); \
   emberAfPluginCountersInitCallback(); \
 
 
@@ -240,6 +253,7 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
 
 
 #define EMBER_AF_GENERATED_PLUGIN_STACK_STATUS_FUNCTION_DECLARATIONS \
+  void emberAfPluginDeviceTableStackStatusCallback(EmberStatus status); \
   void emberAfPluginGreenPowerClientStackStatusCallback(EmberStatus status); \
   void emberAfPluginReportingStackStatusCallback(EmberStatus status); \
   void emberAfPluginConcentratorStackStatusCallback(EmberStatus status); \
@@ -248,6 +262,7 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
 
 
 #define EMBER_AF_GENERATED_PLUGIN_STACK_STATUS_FUNCTION_CALLS \
+  emberAfPluginDeviceTableStackStatusCallback(status); \
   emberAfPluginGreenPowerClientStackStatusCallback(status); \
   emberAfPluginReportingStackStatusCallback(status); \
   emberAfPluginConcentratorStackStatusCallback(status); \
@@ -428,6 +443,7 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
   { EMBER_ZCL_REPORTING_DIRECTION_REPORTED, 1, 0x0300, 0x0003, CLUSTER_MASK_SERVER, 0x0000, 1, 65534, 0 }, \
   { EMBER_ZCL_REPORTING_DIRECTION_REPORTED, 1, 0x0300, 0x0004, CLUSTER_MASK_SERVER, 0x0000, 1, 65534, 0 }, \
   { EMBER_ZCL_REPORTING_DIRECTION_REPORTED, 1, 0x0300, 0x0007, CLUSTER_MASK_SERVER, 0x0000, 1, 65534, 0 }, \
+  { EMBER_ZCL_REPORTING_DIRECTION_REPORTED, 1, 0x0424, 0x0000, CLUSTER_MASK_SERVER, 0x0000, 1, 65534, 0 }, \
 }
-#define EMBER_AF_GENERATED_REPORTING_CONFIG_DEFAULTS_TABLE_SIZE (9)
+#define EMBER_AF_GENERATED_REPORTING_CONFIG_DEFAULTS_TABLE_SIZE (10)
 #endif // SILABS_AF_ENDPOINT_CONFIG
