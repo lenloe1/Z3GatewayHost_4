@@ -342,8 +342,8 @@
 // Use this macro to check if EZSP Common plugin is included
 #define EMBER_AF_PLUGIN_EZSP
 
-// Use this macro to check if EZSP UART plugin is included
-#define EMBER_AF_PLUGIN_EZSP_UART
+// Use this macro to check if EZSP USB plugin is included
+#define EMBER_AF_PLUGIN_EZSP_USB
 
 // Use this macro to check if File Descriptor Dispatch plugin is included
 #define EMBER_AF_PLUGIN_FILE_DESCRIPTOR_DISPATCH
