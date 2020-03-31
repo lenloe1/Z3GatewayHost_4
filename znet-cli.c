@@ -495,6 +495,47 @@ static EmberCommandEntry emberCommandPluginAddressTableTable[] = {
   emberCommandEntryActionWithDetails("set", emberAfPluginAddressTableSetCommand, "ubv", "Set an entry in the address table according to the arguments specified", pluginAddressTableSetCommandArguments),
   emberCommandEntryTerminator(),
 };
+void emAfPluginCommandRelayAddCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginCommandRelayAddCommandArguments[] = {
+  "Incoming device EUI64.",
+  "Incoming device endpoint.",
+  "Incoming cluster ID.",
+  "Outgoing device EUI64.",
+  "Outgoing device endpoint.",
+  "Outgoing cluster ID.",
+  NULL
+};
+#endif
+
+
+void emAfPluginCommandRelayClearCommand(void);
+void emAfPluginCommandRelayLoadCommand(void);
+void emAfPluginCommandRelayPrintCommand(void);
+void emAfPluginCommandRelayRemoveCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginCommandRelayRemoveCommandArguments[] = {
+  "Incoming device EUI64.",
+  "Incoming device endpoint.",
+  "Incoming cluster ID.",
+  "Outgoing device EUI64.",
+  "Outgoing device endpoint.",
+  "Outgoing cluster ID.",
+  NULL
+};
+#endif
+
+
+void emAfPluginCommandRelaySaveCommand(void);
+static EmberCommandEntry emberCommandPluginCommandRelayTable[] = {
+  emberCommandEntryActionWithDetails("add", emAfPluginCommandRelayAddCommand, "buvbuv", "Retransmit commands from inDevice to outDevice.", pluginCommandRelayAddCommandArguments),
+  emberCommandEntryActionWithDetails("clear", emAfPluginCommandRelayClearCommand, "", "Clear all relays.", NULL),
+  emberCommandEntryActionWithDetails("load", emAfPluginCommandRelayLoadCommand, "", "Load from disk.", NULL),
+  emberCommandEntryActionWithDetails("print", emAfPluginCommandRelayPrintCommand, "", "Print relays.", NULL),
+  emberCommandEntryActionWithDetails("remove", emAfPluginCommandRelayRemoveCommand, "buvbuv", "Deletes a relay between devices.", pluginCommandRelayRemoveCommandArguments),
+  emberCommandEntryActionWithDetails("save", emAfPluginCommandRelaySaveCommand, "", "Save to disk.", NULL),
+  emberCommandEntryTerminator(),
+};
 void emberAfPluginConcentratorAggregationCommand(void);
 void emberAfPluginConcentratorPrintSourceRouteTable(void);
 void emberAfPluginConcentratorSetRouterBehaviorCommand(void);
@@ -555,6 +596,98 @@ static EmberCommandEntry emberCommandPluginCountersTable[] = {
   emberCommandEntryActionWithDetails("send-request", emberAfPluginCountersSendRequestCommand, "", "Sends a request for ota counters", NULL),
   emberCommandEntryActionWithDetails("set-threshold", emberAfPluginCountersSetThresholdCommand, "uv", "Set a threshold value for a particular type of counter.", pluginCountersSetThresholdCommandArguments),
   emberCommandEntryActionWithDetails("simple-print", emberAfPluginCountersSimplePrintCommand, "", "Print all counter values.", NULL),
+  emberCommandEntryTerminator(),
+};
+void emberAfDeviceTableClear(void);
+void emAfDeviceTableDiscoverPresentNodeCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableDiscCommandArguments[] = {
+  "Node ID to discover.",
+  NULL
+};
+#endif
+
+
+void emAfDeviceTableIndexRemoveCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableIremoveCommandArguments[] = {
+  "Device table index.",
+  NULL
+};
+#endif
+
+
+void emAfDeviceTableIndexRouteRepairCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableIrepairCommandArguments[] = {
+  "Device table index.",
+  NULL
+};
+#endif
+
+
+void emAfDeviceTableIndexSendCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableIsendCommandArguments[] = {
+  "Device table index.",
+  NULL
+};
+#endif
+
+
+void emAfPluginDeviceTableSendLeaveCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableLeaveCommandArguments[] = {
+  "EUI64 of device.",
+  NULL
+};
+#endif
+
+
+void emAfDeviceTableLoadCommand(void);
+void emberAfDeviceTablePrintDeviceTable(void);
+void emAfDeviceTableRemoveCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableRemoveCommandArguments[] = {
+  "EUI64 of device.",
+  NULL
+};
+#endif
+
+
+void emAfDeviceTableRouteRepairCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableRepairCommandArguments[] = {
+  "EUI64 of device.",
+  NULL
+};
+#endif
+
+
+void emAfDeviceTableSaveCommand(void);
+void emAfDeviceTableSendCommand(void);
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static const char * const pluginDeviceTableSendCommandArguments[] = {
+  "EUI64 of device.",
+  "Endpoint of device.",
+  NULL
+};
+#endif
+
+
+static EmberCommandEntry emberCommandPluginDeviceTableTable[] = {
+  emberCommandEntryActionWithDetails("clear", emberAfDeviceTableClear, "", "Clear the device table", NULL),
+  emberCommandEntryActionWithDetails("disc", emAfDeviceTableDiscoverPresentNodeCommand, "v", "Force a (re)discovery of the device based on the node ID.", pluginDeviceTableDiscCommandArguments),
+  emberCommandEntryActionWithDetails("iremove", emAfDeviceTableIndexRemoveCommand, "v", "Remove device from device table.", pluginDeviceTableIremoveCommandArguments),
+  emberCommandEntryActionWithDetails("irepair", emAfDeviceTableIndexRouteRepairCommand, "v", "Kick off device route repair.", pluginDeviceTableIrepairCommandArguments),
+  emberCommandEntryActionWithDetails("isend", emAfDeviceTableIndexSendCommand, "v", "Send to device in device table.", pluginDeviceTableIsendCommandArguments),
+  emberCommandEntryActionWithDetails("leave", emAfPluginDeviceTableSendLeaveCommand, "b", "Remove device from device table.", pluginDeviceTableLeaveCommandArguments),
+  emberCommandEntryActionWithDetails("load", emAfDeviceTableLoadCommand, "", "Load the file.", NULL),
+  emberCommandEntryActionWithDetails("print", emberAfDeviceTablePrintDeviceTable, "", "Print the device table.", NULL),
+  emberCommandEntryActionWithDetails("remove", emAfDeviceTableRemoveCommand, "b", "Remove device from device table.", pluginDeviceTableRemoveCommandArguments),
+  emberCommandEntryActionWithDetails("repair", emAfDeviceTableRouteRepairCommand, "b", "Kick off device route repair.", pluginDeviceTableRepairCommandArguments),
+  emberCommandEntryActionWithDetails("save", emAfDeviceTableSaveCommand, "", "Save the file.", NULL),
+  emberCommandEntryActionWithDetails("send", emAfDeviceTableSendCommand, "bu", "Send to device in device table.", pluginDeviceTableSendCommandArguments),
   emberCommandEntryTerminator(),
 };
 void emberAfPluginEzModeCommissioningClientCommand(void);
@@ -1585,9 +1718,11 @@ static EmberCommandEntry emberCommandPluginUpdateTcLinkKeyTable[] = {
 };
 static EmberCommandEntry emberCommandPluginTable[] = {
   emberCommandEntrySubMenu("address-table", emberCommandPluginAddressTableTable, ""),
+  emberCommandEntrySubMenu("command-relay", emberCommandPluginCommandRelayTable, ""),
   emberCommandEntrySubMenu("concentrator", emberCommandPluginConcentratorTable, ""),
   emberCommandEntrySubMenu("counter", emberCommandPluginCounterTable, ""),
   emberCommandEntrySubMenu("counters", emberCommandPluginCountersTable, ""),
+  emberCommandEntrySubMenu("device-table", emberCommandPluginDeviceTableTable, ""),
   emberCommandEntrySubMenu("ezmode-commissioning", emberCommandPluginEzmodeCommissioningTable, ""),
   emberCommandEntrySubMenu("gateway", emberCommandPluginGatewayTable, ""),
   emberCommandEntrySubMenu("green-power-client", emberCommandPluginGreenPowerClientTable, ""),
