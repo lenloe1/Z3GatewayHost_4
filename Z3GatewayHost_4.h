@@ -48,6 +48,7 @@
 #define ZCL_USING_TEMP_MEASUREMENT_CLUSTER_CLIENT
 #define ZCL_USING_RELATIVE_HUMIDITY_MEASUREMENT_CLUSTER_CLIENT
 #define ZCL_USING_OCCUPANCY_SENSING_CLUSTER_CLIENT
+#define ZCL_USING_SULFATE_CONCENTRATION_MEASUREMENT_CLUSTER_SERVER
 #define ZCL_USING_IAS_ZONE_CLUSTER_CLIENT
 #define ZCL_USING_PRICE_CLUSTER_CLIENT
 #define ZCL_USING_DEMAND_RESPONSE_LOAD_CONTROL_CLUSTER_CLIENT
@@ -103,6 +104,7 @@
 #define EMBER_AF_TEMP_MEASUREMENT_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 #define EMBER_AF_RELATIVE_HUMIDITY_MEASUREMENT_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 #define EMBER_AF_OCCUPANCY_SENSING_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
+#define EMBER_AF_SULFATE_CONCENTRATION_MEASUREMENT_CLUSTER_SERVER_ENDPOINT_COUNT (1)
 #define EMBER_AF_IAS_ZONE_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 #define EMBER_AF_PRICE_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 #define EMBER_AF_DEMAND_RESPONSE_LOAD_CONTROL_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
@@ -123,9 +125,9 @@
 #define EMBER_AF_MFGLIB_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 
 /**** Cluster Endpoint Summaries ****/
-#define EMBER_AF_MAX_SERVER_CLUSTER_COUNT (8)
+#define EMBER_AF_MAX_SERVER_CLUSTER_COUNT (9)
 #define EMBER_AF_MAX_CLIENT_CLUSTER_COUNT (31)
-#define EMBER_AF_MAX_TOTAL_CLUSTER_COUNT (39)
+#define EMBER_AF_MAX_TOTAL_CLUSTER_COUNT (40)
 
 /**** CLI Section ****/
 #define EMBER_AF_GENERATE_CLI
@@ -158,11 +160,19 @@
 #define EMBER_CALLBACK_SIMPLE_METERING_CLUSTER_REQUEST_FAST_POLL_MODE_RESPONSE
 #define EMBER_CALLBACK_SIMPLE_METERING_CLUSTER_SIMPLE_METERING_CLUSTER_CLIENT_DEFAULT_RESPONSE
 #define EMBER_CALLBACK_SIMPLE_METERING_CLUSTER_SUPPLY_STATUS_RESPONSE
+#define EMBER_CALLBACK_TRUST_CENTER_JOIN
 #define EMBER_CALLBACK_CLUSTER_SECURITY_CUSTOM
 #define EMBER_CALLBACK_OTA_SERVER_QUERY
 #define EMBER_CALLBACK_OTA_SERVER_BLOCK_SIZE
 #define EMBER_CALLBACK_OTA_SERVER_UPGRADE_END_REQUEST
 #define EMBER_CALLBACK_OTA_PAGE_REQUEST_SERVER_POLICY
+#define EMBER_CALLBACK_READ_ATTRIBUTES_RESPONSE
+#define EMBER_CALLBACK_REPORT_ATTRIBUTES_RESPONSE
+#define EMBER_CALLBACK_CONFIGURE_REPORTING_RESPONSE
+#define EMBER_CALLBACK_READ_REPORTING_CONFIGURATION_RESPONSE
+#define EMBER_CALLBACK_MSG_SENT
+#define EMBER_CALLBACK_PRE_MSG
+#define EMBER_CALLBACK_PRE_MESSAGE_SEND
 #define EMBER_CALLBACK_OTA_BOOTLOAD_CLUSTER_OTA_BOOTLOAD_CLUSTER_SERVER_INIT
 #define EMBER_CALLBACK_OTA_BOOTLOAD_CLUSTER_OTA_BOOTLOAD_CLUSTER_SERVER_TICK
 #define EMBER_CALLBACK_OTA_SERVER_INCOMING_MESSAGE_RAW
@@ -278,6 +288,9 @@
 // Use this macro to check if Basic Server Cluster plugin is included
 #define EMBER_AF_PLUGIN_BASIC
 
+// Use this macro to check if cJSON plugin is included
+#define EMBER_AF_PLUGIN_CJSON
+
 // Use this macro to check if Color Control Cluster Server plugin is included
 #define EMBER_AF_PLUGIN_COLOR_CONTROL_SERVER
 // User options for plugin Color Control Cluster Server
@@ -290,6 +303,11 @@
 #define EMBER_AF_PLUGIN_COLOR_CONTROL_SERVER_COLOR_TEMP_CHANGE 1
 #define EMBER_AF_PLUGIN_COLOR_CONTROL_SERVER_HUE_CHANGE 1
 #define EMBER_AF_PLUGIN_COLOR_CONTROL_SERVER_SATURATION_CHANGE 1
+
+// Use this macro to check if Command Relay plugin is included
+#define EMBER_AF_PLUGIN_COMMAND_RELAY
+// User options for plugin Command Relay
+#define EMBER_AF_PLUGIN_COMMAND_RELAY_RELAY_TABLE_SIZE 200
 
 // Use this macro to check if Concentrator Support plugin is included
 #define EMBER_AF_PLUGIN_CONCENTRATOR
@@ -305,6 +323,9 @@
 // Use this macro to check if Counters plugin is included
 #define EMBER_AF_PLUGIN_COUNTERS
 // User options for plugin Counters
+
+// Use this macro to check if Device Table plugin is included
+#define EMBER_AF_PLUGIN_DEVICE_TABLE
 
 // Use this macro to check if EZ-Mode Commissioning plugin is included
 #define EMBER_AF_PLUGIN_EZMODE_COMMISSIONING
@@ -326,6 +347,9 @@
 #define EMBER_AF_PLUGIN_GATEWAY_MAX_FDS 10
 #define EMBER_AF_PLUGIN_GATEWAY_TCP_PORT_OFFSET 4900
 #define EMBER_AF_PLUGIN_GATEWAY_MAX_WAIT_FOR_EVENT_TIMEOUT_MS 0xFFFFFFFF
+
+// Use this macro to check if Gateway Relay Mqtt plugin is included
+#define EMBER_AF_PLUGIN_GATEWAY_RELAY_MQTT
 
 // Use this macro to check if Green Power Client plugin is included
 #define EMBER_AF_PLUGIN_GREEN_POWER_CLIENT
@@ -436,6 +460,9 @@
 // Use this macro to check if OTA POSIX Filesystem Storage Module plugin is included
 #define EMBER_AF_PLUGIN_OTA_STORAGE_POSIX_FILESYSTEM
 
+// Use this macro to check if Paho MQTT plugin is included
+#define EMBER_AF_PLUGIN____________
+
 // Use this macro to check if Poll Control Client Cluster plugin is included
 #define EMBER_AF_PLUGIN_POLL_CONTROL_CLIENT
 // User options for plugin Poll Control Client Cluster
@@ -474,6 +501,15 @@
 #define EMBER_AF_PLUGIN_TIME_SERVER
 // User options for plugin Time Server Cluster
 
+// Use this macro to check if Gateway MQTT Transport plugin is included
+#define EMBER_AF_PLUGIN_TRANSPORT_MQTT
+// User options for plugin Gateway MQTT Transport
+#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_BROKER_ADDRESS "tcp://localhost:1883"
+#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_BROKER_ADDRESS_LENGTH (20)
+#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_QOS QO_S2_EXACTLY_ONCE
+#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_CLIENT_ID_PREFIX "gw"
+#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_CLIENT_ID_PREFIX_LENGTH (2)
+
 // Use this macro to check if Trust Center Network Key Update Broadcast plugin is included
 #define EMBER_AF_PLUGIN_TRUST_CENTER_NWK_KEY_UPDATE_BROADCAST
 
@@ -507,6 +543,15 @@
 
 // Generated API headers
 
+// API cjson from cJSON plugin
+#define EMBER_AF_API_CJSON "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/util/third_party/cjson/cJSON.h"
+
+// API command-relay from Command Relay plugin
+#define EMBER_AF_API_COMMAND_RELAY "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin/command-relay/command-relay.h"
+
+// API device-table from Device Table plugin
+#define EMBER_AF_API_DEVICE_TABLE "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin/device-table/device-table.h"
+
 // API ezsp-protocol from EZSP Common plugin
 #define EMBER_AF_API_EZSP_PROTOCOL "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/util/ezsp/ezsp-protocol.h"
 
@@ -533,6 +578,9 @@
 
 // API ezsp-secure from EZSP Secure Protocol Stub plugin
 #define EMBER_AF_API_EZSP_SECURE "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/util/ezsp/secure-ezsp-protocol.h"
+
+// API transport-mqtt from Gateway MQTT Transport plugin
+#define EMBER_AF_API_TRANSPORT_MQTT "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/util/plugin/plugin-common/transport-mqtt/transport-mqtt.h"
 
 // API crc from Unix Library plugin
 #define EMBER_AF_API_CRC "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/platform/base/hal/micro/crc.h"
