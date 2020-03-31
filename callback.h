@@ -19,6 +19,8 @@
 #include EMBER_AF_API_NETWORK_STEERING
 #include PLATFORM_HEADER
 #include "app/framework/plugin/ota-server-policy/ota-server-policy.h"
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_TRANSPORT_MQTT
 
 
 
@@ -26385,6 +26387,70 @@ uint16_t emberAfPluginSimpleMeteringClientRemoveMirrorCallback(EmberEUI64 reques
 /** @} END Simple Metering Client Plugin Callbacks */
 
 
+/** @name Device Table Plugin Callbacks */
+// @{
+
+/** @brief StateChange
+ *
+ * This callback is called when a device's state changes.
+ *
+ * @param nodeId   Ver.: always
+ * @param state   Ver.: always
+ */
+void emberAfPluginDeviceTableStateChangeCallback(EmberNodeId nodeId,
+                                                 uint8_t state);
+/** @brief Cleared
+ *
+ * This callback is called when a device table has been cleared.
+ *
+ */
+void emberAfPluginDeviceTableClearedCallback(void);
+/** @brief NewDevice
+ *
+ * This callback is called when a new device joins the gateway.
+ *
+ * @param uui64   Ver.: always
+ */
+void emberAfPluginDeviceTableNewDeviceCallback(EmberEUI64 eui64);
+/** @brief Rejoin device
+ *
+ * Called when a device rejoins.
+ *
+ *@param newNodeEui64:  EUI64 of the rejoined device.
+ */
+void emberAfPluginDeviceTableRejoinDeviceCallback(EmberEUI64 newNodeEui64);
+/*
+ *
+ * Called when a device leaves.
+ *
+ *@param newNodeEui64:  EUI64 of the device that left.
+ */
+void emberAfPluginDeviceTableDeviceLeftCallback(EmberEUI64 newNodeEui64);
+/*
+ *
+ * Called when the device table has been initialized.
+ *
+ */
+void emberAfPluginDeviceTableInitialized(void);
+/*
+ *
+ * Called when the device has been removed from the table.
+ *
+ *@param currentIndex:  Index of the removed device.
+ *
+ */
+void emberAfPluginDeviceTableIndexRemovedCallback(uint16_t currentIndex);
+/*
+ *
+ * Called when the device table has been initialized.
+ *
+ *@param index:  Index of the removed device.
+ *
+ */
+void emberAfPluginDeviceTableIndexAddedCallback(uint16_t index);
+/** @} END Device Table Plugin Callbacks */
+
+
 /** @name OTA Bootload Cluster Server Policy Plugin Callbacks */
 // @{
 
@@ -26468,6 +26534,18 @@ void emberAfPluginOtaServerUpdateCompleteCallback(uint16_t manufacturerId,
  */
 uint8_t emberAfOtaServerImageBlockRequestCallback(EmberAfImageBlockRequestCallbackStruct* data);
 /** @} END OTA Bootload Cluster Server Plugin Callbacks */
+
+
+/** @name Command Relay Plugin Callbacks */
+// @{
+
+/** @brief Changed
+ *
+ * Called when relays rules are added or removed.
+ *
+ */
+void emberAfPluginCommandRelayChangedCallback(void);
+/** @} END Command Relay Plugin Callbacks */
 
 
 /** @name Reporting Plugin Callbacks */
@@ -26648,6 +26726,38 @@ void emberAfPluginConcentratorBroadcastSentCallback(void);
  */
 void emberAfPluginOnOffClusterServerPostInitCallback(uint8_t endpoint);
 /** @} END On/Off Server Cluster Plugin Callbacks */
+
+
+/** @name Gateway MQTT Transport Plugin Callbacks */
+// @{
+
+/** @brief MQTT client state is changed.
+ *
+ * This function is called when the state of the MQTT client changes.
+ *
+ * @param state Contains the new and current EmberAfPluginTransportMqttState
+ * state.
+ */
+void emberAfPluginTransportMqttStateChangedCallback(EmberAfPluginTransportMqttState state);
+/** @brief MQTT message arrived.
+ *
+ * This function is called when the MQTT client for the gateway receives
+ * an incoming message on a topic. If the message is processed by the application,
+ * return true. If the message is not processed, return false. This
+ * function is called on a separate thread, so no stack calls should be made
+ * within the implementation of this function. Instead, use a global variable in
+ * that function to communicate the message arrival to a stack event or timer
+ * running from the main loop.
+ *
+ * @param topic A string containing the topic for the message that arrived. While
+ * the underlying MQTT libraries allow NULL characters in a topic, NULL characters
+ * are not supported in this implementation so the `topic` parameter can be
+ * assumed to be NULL terminated.
+ * @param payload A string containing the payload for the message that arrived.
+ */
+bool emberAfPluginTransportMqttMessageArrivedCallback(const char* topic,
+                                                      const char* payload);
+/** @} END Gateway MQTT Transport Plugin Callbacks */
 
 
 /** @name Update TC Link Key Plugin Callbacks */
