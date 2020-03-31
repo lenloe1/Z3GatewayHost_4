@@ -29,4 +29,6 @@ bool emAfReadAttributesResponse(EmberAfClusterId clusterId,uint8_t* buffer,uint1
 
 bool emAfReportAttributes(EmberAfClusterId clusterId,uint8_t * buffer,uint16_t bufLen);
 
+void emAfPluginDeviceTableDeviceLeftCallback(EmberEUI64 newNodeEui64);
+
 #endif // SILABS_ZNET_BOOKKEEPING_H
