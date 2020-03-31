@@ -42,18 +42,28 @@ void emAfResetAttributes(uint8_t endpointId)
 
 // PreCommandReceived function declarations.
 bool emberAfPreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Global
+bool emAfPluginCommandRelayPreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Plugin: command-relay
+bool emAfPluginDeviceTablePreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Plugin: device-table
+bool emberAfPluginGatewayRelayMqttPreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Plugin: gateway-relay-mqtt
 
 bool emAfPreCommandReceived(EmberAfClusterCommand* cmd)
 {
-  return emberAfPreCommandReceivedCallback(cmd);  // Global
+  return (emberAfPreCommandReceivedCallback(cmd)  /* Global */
+          || emAfPluginCommandRelayPreCommandReceivedCallback(cmd)  /* Plugin: command-relay */
+          || emAfPluginDeviceTablePreCommandReceivedCallback(cmd)  /* Plugin: device-table */
+          || emberAfPluginGatewayRelayMqttPreCommandReceivedCallback(cmd)  /* Plugin: gateway-relay-mqtt */);
 }
 
 // PreZDOMessageReceived function declarations.
 bool emberAfPreZDOMessageReceivedCallback(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length);  // Global
+bool emAfPluginDeviceTablePreZDOMessageReceived(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length);  // Plugin: device-table
+bool emberAfPluginGatewayRelayMqttPreZDOMessageReceivedCallback(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length);  // Plugin: gateway-relay-mqtt
 
 bool emAfPreZDOMessageReceived(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length)
 {
-  return emberAfPreZDOMessageReceivedCallback(emberNodeId, apsFrame, message, length);  // Global
+  return (emberAfPreZDOMessageReceivedCallback(emberNodeId, apsFrame, message, length)  /* Global */
+          || emAfPluginDeviceTablePreZDOMessageReceived(emberNodeId, apsFrame, message, length)  /* Plugin: device-table */
+          || emberAfPluginGatewayRelayMqttPreZDOMessageReceivedCallback(emberNodeId, apsFrame, message, length)  /* Plugin: gateway-relay-mqtt */);
 }
 
 // RetrieveAttributeAndCraftResponse function declarations.
@@ -90,4 +100,14 @@ bool emberAfReportAttributesCallback(EmberAfClusterId clusterId,uint8_t * buffer
 bool emAfReportAttributes(EmberAfClusterId clusterId,uint8_t * buffer,uint16_t bufLen)
 {
   return emberAfReportAttributesCallback(clusterId, buffer, bufLen);  // Global
+}
+
+// PluginDeviceTableDeviceLeft function declarations.
+void emAfPluginCommandRelayRemoveDeviceByEui64(EmberEUI64 newNodeEui64);  // Plugin: command-relay
+void emberAfPluginDeviceTableDeviceLeftCallback(EmberEUI64 newNodeEui64);  // Plugin: device-table
+
+void emAfPluginDeviceTableDeviceLeftCallback(EmberEUI64 newNodeEui64)
+{
+  emAfPluginCommandRelayRemoveDeviceByEui64(newNodeEui64);  // Plugin: command-relay
+  emberAfPluginDeviceTableDeviceLeftCallback(newNodeEui64);  // Plugin: device-table
 }
