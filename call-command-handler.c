@@ -178,6 +178,9 @@ EmberAfStatus emberAfClusterSpecificCommandParse(EmberAfClusterCommand *cmd)
     case ZCL_COLOR_CONTROL_CLUSTER_ID:
       result = emberAfColorControlClusterServerCommandParse(cmd);
       break;
+    case ZCL_SULFATE_CONCENTRATION_MEASUREMENT_CLUSTER_ID:
+      result = status(false, true, cmd->mfgSpecific);
+      break;
     default:
       // Unrecognized cluster ID, error status will apply.
       break;
