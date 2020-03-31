@@ -1183,6 +1183,58 @@
 
 /** @} */ // end group plugin-address-table
 
+/** @addtogroup plugin-command-relay Plugin Commands: Command Relay
+ * @ingroup cli
+ * The command relay plugin allows the forwarding of commands from one device to
+ * another.
+ * 
+ * @{
+ */
+
+/** @brief <b>plugin command-relay add [inDeviceEui:8] [inDeviceEndpoint:1] [inClusterId:2] [outDeviceEui:8] [outDeviceEndpoint:1] [outClusterId:2] </b>
+ *   - <i>Retransmit commands from inDevice to outDevice.</i>
+ *     - inDeviceEui - IEEE_ADDRESS - Incoming device EUI64.
+ *     - inDeviceEndpoint - INT8U - Incoming device endpoint.
+ *     - inClusterId - INT16U - Incoming cluster ID.
+ *     - outDeviceEui - IEEE_ADDRESS - Outgoing device EUI64.
+ *     - outDeviceEndpoint - INT8U - Outgoing device endpoint.
+ *     - outClusterId - INT16U - Outgoing cluster ID.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_COMMAND_RELAY_PLUGIN_COMMAND_RELAY_ADD
+
+/** @brief <b>plugin command-relay clear </b>
+ *   - <i>Clear all relays.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_COMMAND_RELAY_PLUGIN_COMMAND_RELAY_CLEAR
+
+/** @brief <b>plugin command-relay load </b>
+ *   - <i>Load from disk.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_COMMAND_RELAY_PLUGIN_COMMAND_RELAY_LOAD
+
+/** @brief <b>plugin command-relay print </b>
+ *   - <i>Print relays.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_COMMAND_RELAY_PLUGIN_COMMAND_RELAY_PRINT
+
+/** @brief <b>plugin command-relay remove [inDeviceEui:8] [inDeviceEndpoint:1] [inClusterId:2] [outDeviceEui:8] [outDeviceEndpoint:1] [outClusterId:2] </b>
+ *   - <i>Deletes a relay between devices.</i>
+ *     - inDeviceEui - IEEE_ADDRESS - Incoming device EUI64.
+ *     - inDeviceEndpoint - INT8U - Incoming device endpoint.
+ *     - inClusterId - INT16U - Incoming cluster ID.
+ *     - outDeviceEui - IEEE_ADDRESS - Outgoing device EUI64.
+ *     - outDeviceEndpoint - INT8U - Outgoing device endpoint.
+ *     - outClusterId - INT16U - Outgoing cluster ID.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_COMMAND_RELAY_PLUGIN_COMMAND_RELAY_REMOVE
+
+/** @brief <b>plugin command-relay save </b>
+ *   - <i>Save to disk.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_COMMAND_RELAY_PLUGIN_COMMAND_RELAY_SAVE
+
+/** @} */ // end group plugin-command-relay
+
 /** @addtogroup plugin-concentrator Plugin Commands: Concentrator
  * @ingroup cli
  * The Concentrator plugin contributes several CLI commands to the application
@@ -1276,6 +1328,86 @@
 #define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_COUNTERS_PLUGIN_COUNTERS_SIMPLE_PRINT
 
 /** @} */ // end group plugin-counters
+
+/** @addtogroup plugin-device-table Plugin Commands: Device Table
+ * @ingroup cli
+ * The device table plugin demonstrates tracking devices as they join the
+	 
+ * gateway's ZigBee network.
+ * 
+ * @{
+ */
+
+/** @brief <b>plugin device-table clear </b>
+ *   - <i>Clear the device table</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_CLEAR
+
+/** @brief <b>plugin device-table disc [nodeId:2] </b>
+ *   - <i>Force a (re)discovery of the device based on the node ID.</i>
+ *     - nodeId - INT16U - Node ID to discover.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_DISC
+
+/** @brief <b>plugin device-table iremove [index:2] </b>
+ *   - <i>Remove device from device table.</i>
+ *     - index - INT16U - Device table index.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_IREMOVE
+
+/** @brief <b>plugin device-table irepair [index:2] </b>
+ *   - <i>Kick off device route repair.</i>
+ *     - index - INT16U - Device table index.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_IREPAIR
+
+/** @brief <b>plugin device-table isend [index:2] </b>
+ *   - <i>Send to device in device table.</i>
+ *     - index - INT16U - Device table index.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_ISEND
+
+/** @brief <b>plugin device-table leave [eui64:8] </b>
+ *   - <i>Remove device from device table.</i>
+ *     - eui64 - IEEE_ADDRESS - EUI64 of device.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_LEAVE
+
+/** @brief <b>plugin device-table load </b>
+ *   - <i>Load the file.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_LOAD
+
+/** @brief <b>plugin device-table print </b>
+ *   - <i>Print the device table.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_PRINT
+
+/** @brief <b>plugin device-table remove [eui64:8] </b>
+ *   - <i>Remove device from device table.</i>
+ *     - eui64 - IEEE_ADDRESS - EUI64 of device.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_REMOVE
+
+/** @brief <b>plugin device-table repair [eui64:8] </b>
+ *   - <i>Kick off device route repair.</i>
+ *     - eui64 - IEEE_ADDRESS - EUI64 of device.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_REPAIR
+
+/** @brief <b>plugin device-table save </b>
+ *   - <i>Save the file.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_SAVE
+
+/** @brief <b>plugin device-table send [eui64:8] [endpoint:1] </b>
+ *   - <i>Send to device in device table.</i>
+ *     - eui64 - IEEE_ADDRESS - EUI64 of device.
+ *     - endpoint - INT8U - Endpoint of device.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_DEVICE_TABLE_PLUGIN_DEVICE_TABLE_SEND
+
+/** @} */ // end group plugin-device-table
 
 /** @addtogroup plugin-ezmode-commissioning Plugin Commands: EZ-Mode Commissioning
  * @ingroup cli
@@ -4111,6 +4243,16 @@
 
 /** @} */ // end group plugin-address-table
 
+/** @addtogroup plugin-command-relay Plugin Commands: Command Relay
+ * @ingroup cli
+ * The command relay plugin allows the forwarding of commands from one device to
+ * another.
+ * 
+ * @{
+ */
+
+/** @} */ // end group plugin-command-relay
+
 /** @addtogroup plugin-concentrator Plugin Commands: Concentrator
  * @ingroup cli
  * The Concentrator plugin contributes several CLI commands to the application
@@ -4130,6 +4272,17 @@
  */
 
 /** @} */ // end group plugin-counters
+
+/** @addtogroup plugin-device-table Plugin Commands: Device Table
+ * @ingroup cli
+ * The device table plugin demonstrates tracking devices as they join the
+	 
+ * gateway's ZigBee network.
+ * 
+ * @{
+ */
+
+/** @} */ // end group plugin-device-table
 
 /** @addtogroup plugin-ezmode-commissioning Plugin Commands: EZ-Mode Commissioning
  * @ingroup cli
