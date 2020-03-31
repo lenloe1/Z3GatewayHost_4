@@ -2202,43 +2202,10 @@ static void zclDmGetCinCommand(void) {
                           ZCL_GET_C_I_N_COMMAND_ID);
 }
 
-static void zclDmGetEventConfigCommand(void) {
-  zclSimpleServerCommand( ZCL_DEVICE_MANAGEMENT_CLUSTER_ID,
-                          ZCL_GET_EVENT_CONFIGURATION_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclDmGetEventConfigCommandArguments[] = {
-  "event id",
-  NULL
-};
-#endif
-
-
 static void zclDmGetSiteIdCommand(void) {
   zclSimpleClientCommand( ZCL_DEVICE_MANAGEMENT_CLUSTER_ID,
                           ZCL_GET_SITE_ID_COMMAND_ID);
 }
-
-static void zclDmPubChgOfSupplierCommand(void) {
-  zclSimpleServerCommand( ZCL_DEVICE_MANAGEMENT_CLUSTER_ID,
-                          ZCL_PUBLISH_CHANGE_OF_SUPPLIER_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclDmPubChgOfSupplierCommandArguments[] = {
-  "current provider id",
-  "issuer event id",
-  "tariff type",
-  "proposed provider id",
-  "provider change implementation time",
-  "provider change control",
-  "proposed provider name",
-  "proposed provider contact details",
-  NULL
-};
-#endif
-
 
 static void zclDmReqNewPassCommand(void) {
   zclSimpleClientCommand( ZCL_DEVICE_MANAGEMENT_CLUSTER_ID,
@@ -2248,23 +2215,6 @@ static void zclDmReqNewPassCommand(void) {
 #if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
 static const char * const zclDmReqNewPassCommandArguments[] = {
   "password type",
-  NULL
-};
-#endif
-
-
-static void zclDmReqNewPassRespCommand(void) {
-  zclSimpleServerCommand( ZCL_DEVICE_MANAGEMENT_CLUSTER_ID,
-                          ZCL_REQUEST_NEW_PASSWORD_RESPONSE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclDmReqNewPassRespCommandArguments[] = {
-  "issuer event id",
-  "implementation date time",
-  "duration in minutes",
-  "password type",
-  "password",
   NULL
 };
 #endif
@@ -2286,67 +2236,15 @@ static const char * const zclDmRptEventConfigCommandArguments[] = {
 #endif
 
 
-static void zclDmSetEventConfigCommand(void) {
-  zclSimpleServerCommand( ZCL_DEVICE_MANAGEMENT_CLUSTER_ID,
-                          ZCL_SET_EVENT_CONFIGURATION_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclDmSetEventConfigCommandArguments[] = {
-  "issuer event id",
-  "start date time",
-  "event configuration",
-  "configuration control",
-  "event configuration payload",
-  "",
-  NULL
-};
-#endif
-
-
 static EmberCommandEntry emberCommandZclDmTable[] = {
   emberCommandEntryActionWithDetails("get-chg-of-supplier", zclDmGetChgOfSupplierCommand, "", "This command is used to request the ESI to respond with information re ...", NULL),
   emberCommandEntryActionWithDetails("get-chg-of-tenancy", zclDmGetChgOfTenancyCommand, "", "This command is used to request the ESI to respond with information re ...", NULL),
   emberCommandEntryActionWithDetails("get-cin", zclDmGetCinCommand, "", "This command is used to request the ESI to respond with information re ...", NULL),
-  emberCommandEntryActionWithDetails("get-event-config", zclDmGetEventConfigCommand, "v", "This command allows the server to request details of event configurati ...", zclDmGetEventConfigCommandArguments),
   emberCommandEntryActionWithDetails("get-site-id", zclDmGetSiteIdCommand, "", "This command is used to request the ESI to respond with information re ...", NULL),
-  emberCommandEntryActionWithDetails("pub-chg-of-supplier", zclDmPubChgOfSupplierCommand, "wwuwwwbb", "This command is used to change the Supplier (energy supplier) that is  ...", zclDmPubChgOfSupplierCommandArguments),
   emberCommandEntryActionWithDetails("req-new-pass", zclDmReqNewPassCommand, "u", "This command is used to request the current password from the server.", zclDmReqNewPassCommandArguments),
-  emberCommandEntryActionWithDetails("req-new-pass-resp", zclDmReqNewPassRespCommand, "wwvub", "This command is used to send the current password to the client.", zclDmReqNewPassRespCommandArguments),
   emberCommandEntryActionWithDetails("rpt-event-config", zclDmRptEventConfigCommand, "uub*", "This command is sent in response to a GetEventConfiguration command.", zclDmRptEventConfigCommandArguments),
-  emberCommandEntryActionWithDetails("set-event-config", zclDmSetEventConfigCommand, "wwuuu*", "This command provides a method to set the event configuration attribut ...", zclDmSetEventConfigCommandArguments),
   emberCommandEntryTerminator(),
 };
-static void zclDrlcCaCommand(void) {
-  zclSimpleServerCommand( ZCL_DEMAND_RESPONSE_LOAD_CONTROL_CLUSTER_ID,
-                          ZCL_CANCEL_ALL_LOAD_CONTROL_EVENTS_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclDrlcCaCommandArguments[] = {
-  "cancel control",
-  NULL
-};
-#endif
-
-
-static void zclDrlcClCommand(void) {
-  zclSimpleServerCommand( ZCL_DEMAND_RESPONSE_LOAD_CONTROL_CLUSTER_ID,
-                          ZCL_CANCEL_LOAD_CONTROL_EVENT_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclDrlcClCommandArguments[] = {
-  "issuer event id",
-  "device class",
-  "utility enrollment group",
-  "cancel control",
-  "effective time",
-  NULL
-};
-#endif
-
-
 static void zclDrlcGseCommand(void) {
   zclSimpleClientCommand( ZCL_DEMAND_RESPONSE_LOAD_CONTROL_CLUSTER_ID,
                           ZCL_GET_SCHEDULED_EVENTS_COMMAND_ID);
@@ -2362,24 +2260,8 @@ static const char * const zclDrlcGseCommandArguments[] = {
 #endif
 
 
-void zclDrlcLoadControlEventCommand(void);
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclDrlcLceCommandArguments[] = {
-  "4 byte event id for the load control event",
-  "UEG of the load control event",
-  "Start time for the load control event",
-  "Duration for the load control event",
-  "Control byte for the load control event",
-  NULL
-};
-#endif
-
-
 static EmberCommandEntry emberCommandZclDrlcTable[] = {
-  emberCommandEntryActionWithDetails("ca", zclDrlcCaCommand, "u", "Command description for CancelAllLoadControlEvents", zclDrlcCaCommandArguments),
-  emberCommandEntryActionWithDetails("cl", zclDrlcClCommand, "wvuuw", "Command description for CancelLoadControlEvent", zclDrlcClCommandArguments),
   emberCommandEntryActionWithDetails("gse", zclDrlcGseCommand, "wuw", "Command description for GetScheduledEvents", zclDrlcGseCommandArguments),
-  emberCommandEntryActionWithDetails("lce", zclDrlcLoadControlEventCommand, "wuwvu", "Populate a buffer to send a static load control event with the followi ...", zclDrlcLceCommandArguments),
   emberCommandEntryTerminator(),
 };
 static void zclEventsClearEventLogCommand(void) {
@@ -2843,57 +2725,6 @@ static EmberCommandEntry emberCommandZclLevelControlTable[] = {
   emberCommandEntryActionWithDetails("stop", zclLevelControlStopCommand, "!uu", "Command description for Stop", zclLevelControlStopCommandArguments),
   emberCommandEntryTerminator(),
 };
-static void zclMeteringCfgMirrorCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_CONFIGURE_MIRROR_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringCfgMirrorCommandArguments[] = {
-  "issuer event id",
-  "reporting interval",
-  "mirror notification reporting",
-  "notification scheme",
-  NULL
-};
-#endif
-
-
-static void zclMeteringCfgNftFlagsCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_CONFIGURE_NOTIFICATION_FLAGS_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringCfgNftFlagsCommandArguments[] = {
-  "issuer event id",
-  "notification scheme",
-  "notification flag attribute id",
-  "cluster id",
-  "manufacturer code",
-  "number of commands",
-  "command ids",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclMeteringCfgNftSchemeCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_CONFIGURE_NOTIFICATION_SCHEME_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringCfgNftSchemeCommandArguments[] = {
-  "issuer event id",
-  "notification scheme",
-  "notification flag order",
-  NULL
-};
-#endif
-
-
 static void zclMeteringChgSupplyCommand(void) {
   zclSimpleClientCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
                           ZCL_CHANGE_SUPPLY_COMMAND_ID);
@@ -2907,21 +2738,6 @@ static const char * const zclMeteringChgSupplyCommandArguments[] = {
   "implementation date time",
   "proposed supply status",
   "supply control bits",
-  NULL
-};
-#endif
-
-
-static void zclMeteringGetNtfyMsgCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_GET_NOTIFIED_MESSAGE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringGetNtfyMsgCommandArguments[] = {
-  "notification scheme",
-  "notification flag attribute id",
-  "notification flags n",
   NULL
 };
 #endif
@@ -3000,32 +2816,6 @@ static const char * const zclMeteringMirrorRemovedCommandArguments[] = {
 #endif
 
 
-static void zclMeteringPubSsCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_PUBLISH_SNAPSHOT_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringPubSsCommandArguments[] = {
-  "snapshot id",
-  "snapshot time",
-  "total snapshots found",
-  "command index",
-  "total commands",
-  "snapshot cause",
-  "snapshot payload type",
-  "snapshot payload",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclMeteringRemoveMirrorCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_REMOVE_MIRROR_COMMAND_ID);
-}
-
 static void zclMeteringReqFastPollModeCommand(void) {
   zclSimpleClientCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
                           ZCL_REQUEST_FAST_POLL_MODE_COMMAND_ID);
@@ -3039,11 +2829,6 @@ static const char * const zclMeteringReqFastPollModeCommandArguments[] = {
 };
 #endif
 
-
-static void zclMeteringRequestMirrorCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_REQUEST_MIRROR_COMMAND_ID);
-}
 
 static void zclMeteringRstLoadLimitCtrCommand(void) {
   zclSimpleClientCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
@@ -3070,21 +2855,6 @@ static const char * const zclMeteringSchSnapshotCommandArguments[] = {
   "command index",
   "command count",
   "snapshot schedule payload",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclMeteringSchSnapshotRespCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_SCHEDULE_SNAPSHOT_RESPONSE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringSchSnapshotRespCommandArguments[] = {
-  "issuer event id",
-  "snapshot response payload",
   "",
   NULL
 };
@@ -3128,19 +2898,6 @@ static const char * const zclMeteringSetUncntrlFlowThresholdCommandArguments[] =
 #endif
 
 
-static void zclMeteringStartSampRspCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_START_SAMPLING_RESPONSE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringStartSampRspCommandArguments[] = {
-  "sample id",
-  NULL
-};
-#endif
-
-
 static void zclMeteringStartSamplingCommand(void) {
   zclSimpleClientCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
                           ZCL_START_SAMPLING_COMMAND_ID);
@@ -3153,22 +2910,6 @@ static const char * const zclMeteringStartSamplingCommandArguments[] = {
   "sample type",
   "sample request interval",
   "max number of samples",
-  NULL
-};
-#endif
-
-
-static void zclMeteringSupStatRspCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_SUPPLY_STATUS_RESPONSE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringSupStatRspCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "implementation date time",
-  "supply status",
   NULL
 };
 #endif
@@ -3187,45 +2928,20 @@ static const char * const zclMeteringTakeSnapshotCommandArguments[] = {
 #endif
 
 
-static void zclMeteringTakeSnapshotRespCommand(void) {
-  zclSimpleServerCommand( ZCL_SIMPLE_METERING_CLUSTER_ID,
-                          ZCL_TAKE_SNAPSHOT_RESPONSE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMeteringTakeSnapshotRespCommandArguments[] = {
-  "snapshot id",
-  "snapshot confirmation",
-  NULL
-};
-#endif
-
-
 static EmberCommandEntry emberCommandZclMeteringTable[] = {
-  emberCommandEntryActionWithDetails("cfg-mirror", zclMeteringCfgMirrorCommand, "w0uu", "ConfigureMirror is sent to the mirror once the mirror has been created ...", zclMeteringCfgMirrorCommandArguments),
-  emberCommandEntryActionWithDetails("cfg-nft-flags", zclMeteringCfgNftFlagsCommand, "wuvvvuu*", "The ConfigureNotificationFlags command is used to set the commands rel ...", zclMeteringCfgNftFlagsCommandArguments),
-  emberCommandEntryActionWithDetails("cfg-nft-scheme", zclMeteringCfgNftSchemeCommand, "wuw", "The ConfigureNotificationScheme is sent to the mirror once the mirror  ...", zclMeteringCfgNftSchemeCommandArguments),
   emberCommandEntryActionWithDetails("chg-supply", zclMeteringChgSupplyCommand, "wwwwuu", "This command is sent from the Head-end or ESI to the Metering Device t ...", zclMeteringChgSupplyCommandArguments),
-  emberCommandEntryActionWithDetails("get-ntfy-msg", zclMeteringGetNtfyMsgCommand, "uvw", "The GetNotifiedMessage command is used only when a BOMD is being mirro ...", zclMeteringGetNtfyMsgCommandArguments),
   emberCommandEntryActionWithDetails("get-profile", zclMeteringGetProfileCommand, "uwu", "The GetProfile command is generated when a client device wishes to ret ...", zclMeteringGetProfileCommandArguments),
   emberCommandEntryActionWithDetails("get-sampled-data", zclMeteringGetSampledDataCommand, "vwuv", "This command is used to request sampled data from the serve ...", zclMeteringGetSampledDataCommandArguments),
   emberCommandEntryActionWithDetails("get-snapshot", zclMeteringGetSnapshotCommand, "wwuw", "This command is used to request snapshot data from the cluster server.", zclMeteringGetSnapshotCommandArguments),
   emberCommandEntryActionWithDetails("local-chg-supply", zclMeteringLocalChgSupplyCommand, "u", "This command is a simplified version of the ChangeSupply command, inte ...", zclMeteringLocalChgSupplyCommandArguments),
   emberCommandEntryActionWithDetails("mirror-removed", zclMeteringMirrorRemovedCommand, "v", "The Mirror Removed Command allows the ESI to inform a sleepy Metering  ...", zclMeteringMirrorRemovedCommandArguments),
-  emberCommandEntryActionWithDetails("pub-ss", zclMeteringPubSsCommand, "wwuuuwuu*", "This command is generated in response to a GetSnapshot comman ...", zclMeteringPubSsCommandArguments),
-  emberCommandEntryActionWithDetails("remove-mirror", zclMeteringRemoveMirrorCommand, "", "This command is used to request the ESI to remove its mirror of Meteri ...", NULL),
   emberCommandEntryActionWithDetails("req-fast-poll-mode", zclMeteringReqFastPollModeCommand, "uu", "The Request Fast Poll Mode command is generated when the metering clie ...", zclMeteringReqFastPollModeCommandArguments),
-  emberCommandEntryActionWithDetails("request-mirror", zclMeteringRequestMirrorCommand, "", "This command is used to request the ESI to mirror Metering Device data ...", NULL),
   emberCommandEntryActionWithDetails("rst-load-limit-ctr", zclMeteringRstLoadLimitCtrCommand, "ww", "The ResetLoadLimitCounter command shall cause the LoadLimitCounter att ...", zclMeteringRstLoadLimitCtrCommandArguments),
   emberCommandEntryActionWithDetails("sch-snapshot", zclMeteringSchSnapshotCommand, "wuub*", "This command is used to set up a schedule of when the device shall cre ...", zclMeteringSchSnapshotCommandArguments),
-  emberCommandEntryActionWithDetails("sch-snapshot-resp", zclMeteringSchSnapshotRespCommand, "wv*", "This command is generated in response to a ScheduleSnapshot command, a ...", zclMeteringSchSnapshotRespCommandArguments),
   emberCommandEntryActionWithDetails("set-supply-status", zclMeteringSetSupplyStatusCommand, "wuuuu", "This command is used to specify the required status of the supply foll ...", zclMeteringSetSupplyStatusCommandArguments),
   emberCommandEntryActionWithDetails("set-uncntrl-flow-threshold", zclMeteringSetUncntrlFlowThresholdCommand, "wwvuvvuv", "This command is used to update the 'Uncontrolled Flow Rate' configurat ...", zclMeteringSetUncntrlFlowThresholdCommandArguments),
-  emberCommandEntryActionWithDetails("start-samp-rsp", zclMeteringStartSampRspCommand, "v", "This command is transmitted by a Metering Device in response to a Star ...", zclMeteringStartSampRspCommandArguments),
   emberCommandEntryActionWithDetails("start-sampling", zclMeteringStartSamplingCommand, "wwuvv", "The sampling mechanism allows a set of samples of the specified type o ...", zclMeteringStartSamplingCommandArguments),
-  emberCommandEntryActionWithDetails("sup-stat-rsp", zclMeteringSupStatRspCommand, "wwwu", "This command is transmitted by a Metering Device in response to a Chan ...", zclMeteringSupStatRspCommandArguments),
   emberCommandEntryActionWithDetails("take-snapshot", zclMeteringTakeSnapshotCommand, "w", "This command is used to instruct the cluster server to take a single s ...", zclMeteringTakeSnapshotCommandArguments),
-  emberCommandEntryActionWithDetails("take-snapshot-resp", zclMeteringTakeSnapshotRespCommand, "wu", "This command is generated in response to a TakeSnapshot command, and i ...", zclMeteringTakeSnapshotRespCommandArguments),
   emberCommandEntryTerminator(),
 };
 void zclMfgCodeCommand(void);
@@ -3288,20 +3004,6 @@ static EmberCommandEntry emberCommandZclMfglibTable[] = {
   emberCommandEntryActionWithDetails("tone", zclMfglibToneCommand, "usv", "Command to put the device into tone mode.", zclMfglibToneCommandArguments),
   emberCommandEntryTerminator(),
 };
-static void zclMsgCancelCommand(void) {
-  zclSimpleServerCommand( ZCL_MESSAGING_CLUSTER_ID,
-                          ZCL_CANCEL_MESSAGE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMsgCancelCommandArguments[] = {
-  "message id",
-  "message control",
-  NULL
-};
-#endif
-
-
 static void zclMsgConfirmCommand(void) {
   zclSimpleClientCommand( ZCL_MESSAGING_CLUSTER_ID,
                           ZCL_MESSAGE_CONFIRMATION_COMMAND_ID);
@@ -3313,42 +3015,6 @@ static const char * const zclMsgConfirmCommandArguments[] = {
   "confirmation time",
   "message confirmation control",
   "message response",
-  NULL
-};
-#endif
-
-
-static void zclMsgDispCommand(void) {
-  zclSimpleServerCommand( ZCL_MESSAGING_CLUSTER_ID,
-                          ZCL_DISPLAY_MESSAGE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMsgDispCommandArguments[] = {
-  "message id",
-  "message control",
-  "start time",
-  "duration in minutes",
-  "message",
-  "optional extended message control",
-  NULL
-};
-#endif
-
-
-static void zclMsgDispProtdCommand(void) {
-  zclSimpleServerCommand( ZCL_MESSAGING_CLUSTER_ID,
-                          ZCL_DISPLAY_PROTECTED_MESSAGE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMsgDispProtdCommandArguments[] = {
-  "message id",
-  "message control",
-  "start time",
-  "duration in minutes",
-  "message",
-  "optional extended message control",
   NULL
 };
 #endif
@@ -3372,27 +3038,10 @@ static const char * const zclMsgGetMsgXCommandArguments[] = {
 #endif
 
 
-static void zclMsgXAllCommand(void) {
-  zclSimpleServerCommand( ZCL_MESSAGING_CLUSTER_ID,
-                          ZCL_CANCEL_ALL_MESSAGES_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclMsgXAllCommandArguments[] = {
-  "implementation date time",
-  NULL
-};
-#endif
-
-
 static EmberCommandEntry emberCommandZclMsgTable[] = {
-  emberCommandEntryActionWithDetails("cancel", zclMsgCancelCommand, "wu", "The CancelMessage command provides the ability to cancel the sending o ...", zclMsgCancelCommandArguments),
   emberCommandEntryActionWithDetails("confirm", zclMsgConfirmCommand, "wwub", "The Message Confirmation command provides an indication that a Utility ...", zclMsgConfirmCommandArguments),
-  emberCommandEntryActionWithDetails("disp", zclMsgDispCommand, "wuwvbu", "Command description for DisplayMessage", zclMsgDispCommandArguments),
-  emberCommandEntryActionWithDetails("disp-protd", zclMsgDispProtdCommand, "wuwvbu", "The DisplayProtected Message command is for use with messages that are ...", zclMsgDispProtdCommandArguments),
   emberCommandEntryActionWithDetails("get", zclMsgGetCommand, "", "Command description for GetLastMessage", NULL),
   emberCommandEntryActionWithDetails("get-msg-x", zclMsgGetMsgXCommand, "w", "This command initiates the return of the first (and maybe only) Cancel ...", zclMsgGetMsgXCommandArguments),
-  emberCommandEntryActionWithDetails("x-all", zclMsgXAllCommand, "w", "The CancelAllMessages command indicates to a client device that it sho ...", zclMsgXAllCommandArguments),
   emberCommandEntryTerminator(),
 };
 static void zclOnOffOffCommand(void) {
@@ -3581,22 +3230,6 @@ static const char * const zclPrepaymentChgPmtModeCommandArguments[] = {
 #endif
 
 
-static void zclPrepaymentChgPmtModeRespCommand(void) {
-  zclSimpleServerCommand( ZCL_PREPAYMENT_CLUSTER_ID,
-                          ZCL_CHANGE_PAYMENT_MODE_RESPONSE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPrepaymentChgPmtModeRespCommandArguments[] = {
-  "friendly credit",
-  "friendly credit calendar id",
-  "emergency credit limit",
-  "emergency credit threshold",
-  NULL
-};
-#endif
-
-
 static void zclPrepaymentConsTopUpCommand(void) {
   zclSimpleClientCommand( ZCL_PREPAYMENT_CLUSTER_ID,
                           ZCL_CONSUMER_TOP_UP_COMMAND_ID);
@@ -3606,22 +3239,6 @@ static void zclPrepaymentConsTopUpCommand(void) {
 static const char * const zclPrepaymentConsTopUpCommandArguments[] = {
   "originating device",
   "top up code",
-  NULL
-};
-#endif
-
-
-static void zclPrepaymentConsTopUpRespCommand(void) {
-  zclSimpleServerCommand( ZCL_PREPAYMENT_CLUSTER_ID,
-                          ZCL_CONSUMER_TOP_UP_RESPONSE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPrepaymentConsTopUpRespCommandArguments[] = {
-  "result type",
-  "top up value",
-  "source of top up",
-  "credit remaining",
   NULL
 };
 #endif
@@ -3704,59 +3321,6 @@ static const char * const zclPrepaymentGetTopUpLogCommandArguments[] = {
 #endif
 
 
-static void zclPrepaymentPubDebtLogCommand(void) {
-  zclSimpleServerCommand( ZCL_PREPAYMENT_CLUSTER_ID,
-                          ZCL_PUBLISH_DEBT_LOG_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPrepaymentPubDebtLogCommandArguments[] = {
-  "command index",
-  "total number of commands",
-  "debt payload",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclPrepaymentPubPrepSsCommand(void) {
-  zclSimpleServerCommand( ZCL_PREPAYMENT_CLUSTER_ID,
-                          ZCL_PUBLISH_PREPAY_SNAPSHOT_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPrepaymentPubPrepSsCommandArguments[] = {
-  "snapshot id",
-  "snapshot time",
-  "total snapshots found",
-  "command index",
-  "total number of commands",
-  "snapshot cause",
-  "snapshot payload type",
-  "snapshot payload",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclPrepaymentPubTopUpLogCommand(void) {
-  zclSimpleServerCommand( ZCL_PREPAYMENT_CLUSTER_ID,
-                          ZCL_PUBLISH_TOP_UP_LOG_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPrepaymentPubTopUpLogCommandArguments[] = {
-  "command index",
-  "total number of commands",
-  "top up payload",
-  "",
-  NULL
-};
-#endif
-
-
 static void zclPrepaymentSelAvEmCredCommand(void) {
   zclSimpleClientCommand( ZCL_PREPAYMENT_CLUSTER_ID,
                           ZCL_SELECT_AVAILABLE_EMERGENCY_CREDIT_COMMAND_ID);
@@ -3822,38 +3386,18 @@ static const char * const zclPrepaymentSetOaDebtCapCommandArguments[] = {
 static EmberCommandEntry emberCommandZclPrepaymentTable[] = {
   emberCommandEntryActionWithDetails("chg-debt", zclPrepaymentChgDebtCommand, "wbwuuwvuwv", "The ChangeDebt command is send to the Metering Device to change the fu ...", zclPrepaymentChgDebtCommandArguments),
   emberCommandEntryActionWithDetails("chg-pmt-mode", zclPrepaymentChgPmtModeCommand, "wwwvw", "This command is sent to a Metering Device to instruct it to change its ...", zclPrepaymentChgPmtModeCommandArguments),
-  emberCommandEntryActionWithDetails("chg-pmt-mode-resp", zclPrepaymentChgPmtModeRespCommand, "uwww", "This command is send in response to the ChangePaymentMode Command.", zclPrepaymentChgPmtModeRespCommandArguments),
   emberCommandEntryActionWithDetails("cons-top-up", zclPrepaymentConsTopUpCommand, "ub", "The ConsumerTopUp command is used by the IPD and the ESI as a method o ...", zclPrepaymentConsTopUpCommandArguments),
-  emberCommandEntryActionWithDetails("cons-top-up-resp", zclPrepaymentConsTopUpRespCommand, "uwuw", "This command is send in response to the ConsumerTopUp Command.", zclPrepaymentConsTopUpRespCommandArguments),
   emberCommandEntryActionWithDetails("cred-adj", zclPrepaymentCredAdjCommand, "wwuw", "The CreditAdjustment command is sent to update the accounting base for ...", zclPrepaymentCredAdjCommandArguments),
   emberCommandEntryActionWithDetails("em-cred-setup", zclPrepaymentEmCredSetupCommand, "wwww", "This command is a method to set up the parameters for the emergency cr ...", zclPrepaymentEmCredSetupCommandArguments),
   emberCommandEntryActionWithDetails("get-debt-repmt-log", zclPrepaymentGetDebtRepmtLogCommand, "wuu", "This command is used to request the contents of the repayment log.", zclPrepaymentGetDebtRepmtLogCommandArguments),
   emberCommandEntryActionWithDetails("get-pp-ss", zclPrepaymentGetPpSsCommand, "wwuw", "This command is used to request the cluster server for snapshot data.", zclPrepaymentGetPpSsCommandArguments),
   emberCommandEntryActionWithDetails("get-top-up-log", zclPrepaymentGetTopUpLogCommand, "wu", "This command is sent to the Metering Device to retrieve the log of Top ...", zclPrepaymentGetTopUpLogCommandArguments),
-  emberCommandEntryActionWithDetails("pub-debt-log", zclPrepaymentPubDebtLogCommand, "uub*", "This command is used to send the contents of the Repayment Log.", zclPrepaymentPubDebtLogCommandArguments),
-  emberCommandEntryActionWithDetails("pub-prep-ss", zclPrepaymentPubPrepSsCommand, "wwuuuwuu*", "This command is generated in response to a GetPrepaySnapshot comman ...", zclPrepaymentPubPrepSsCommandArguments),
-  emberCommandEntryActionWithDetails("pub-top-up-log", zclPrepaymentPubTopUpLogCommand, "uub*", "This command is used to send the Top Up Code Log entries to the client ...", zclPrepaymentPubTopUpLogCommandArguments),
   emberCommandEntryActionWithDetails("sel-av-em-cred", zclPrepaymentSelAvEmCredCommand, "wubb", "This command is sent to the Metering Device to activate the use of any ...", zclPrepaymentSelAvEmCredCommandArguments),
   emberCommandEntryActionWithDetails("set-low-cred-wng-lvl", zclPrepaymentSetLowCredWngLvlCommand, "w", "This command is sent from client to a Prepayment server to set the war ...", zclPrepaymentSetLowCredWngLvlCommandArguments),
   emberCommandEntryActionWithDetails("set-max-cred-lmt", zclPrepaymentSetMaxCredLmtCommand, "wwwww", "This command is sent from a client to the Prepayment server to set the ...", zclPrepaymentSetMaxCredLmtCommandArguments),
   emberCommandEntryActionWithDetails("set-oa-debt-cap", zclPrepaymentSetOaDebtCapCommand, "wwww", "This command is sent from a client to the Prepayment server to set the ...", zclPrepaymentSetOaDebtCapCommandArguments),
   emberCommandEntryTerminator(),
 };
-static void zclPriceCancelTariffCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_CANCEL_TARIFF_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPriceCancelTariffCommandArguments[] = {
-  "provider id",
-  "issuer tariff id",
-  "tariff type",
-  NULL
-};
-#endif
-
-
 static void zclPriceCppEventRespCommand(void) {
   zclSimpleClientCommand( ZCL_PRICE_CLUSTER_ID,
                           ZCL_CPP_EVENT_RESPONSE_COMMAND_ID);
@@ -4069,302 +3613,6 @@ static const char * const zclPricePriceAckCommandArguments[] = {
 #endif
 
 
-static void zclPricePubBillingPeriodCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_BILLING_PERIOD_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubBillingPeriodCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "billing period start time",
-  "billing period duration",
-  "billing period duration type",
-  "tariff type",
-  NULL
-};
-#endif
-
-
-static void zclPricePubBlockPeriodCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_BLOCK_PERIOD_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubBlockPeriodCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "block period start time",
-  "block period duration",
-  "number of price tiers and number of block thresholds",
-  "block period control",
-  "block period duration type",
-  "tariff type",
-  "tariff resolution period",
-  NULL
-};
-#endif
-
-
-static void zclPricePubBlockThresholdCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_BLOCK_THRESHOLDS_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubBlockThresholdCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "start time",
-  "issuer tariff id",
-  "command index",
-  "number of commands",
-  "sub payload control",
-  "payload",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclPricePubCalValCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_CALORIFIC_VALUE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubCalValCommandArguments[] = {
-  "issuer event id",
-  "start time",
-  "calorific value",
-  "calorific value unit",
-  "calorific value trailing digit",
-  NULL
-};
-#endif
-
-
-static void zclPricePubCo2ValCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_C_O2_VALUE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubCo2ValCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "start time",
-  "tariff type",
-  "c o2 value",
-  "c o2 value unit",
-  "c o2 value trailing digit",
-  NULL
-};
-#endif
-
-
-static void zclPricePubConsolidatedBillCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_CONSOLIDATED_BILL_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubConsolidatedBillCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "billing period start time",
-  "billing period duration",
-  "billing period duration type",
-  "tariff type",
-  "consolidated bill",
-  "currency",
-  "bill trailing digit",
-  NULL
-};
-#endif
-
-
-static void zclPricePubCppEventCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_CPP_EVENT_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubCppEventCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "start time",
-  "duration in minutes",
-  "tariff type",
-  "cpp price tier",
-  "cpp auth",
-  NULL
-};
-#endif
-
-
-static void zclPricePubCreditPaymentCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_CREDIT_PAYMENT_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubCreditPaymentCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "credit payment due date",
-  "credit payment over due amount",
-  "credit payment status",
-  "credit payment",
-  "credit payment date",
-  "credit payment ref",
-  NULL
-};
-#endif
-
-
-static void zclPricePubCurrencyConversionCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_CURRENCY_CONVERSION_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubCurrencyConversionCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "start time",
-  "old currency",
-  "new currency",
-  "conversion factor",
-  "conversion factor trailing digit",
-  "currency change control flags",
-  NULL
-};
-#endif
-
-
-static void zclPricePubPriceCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_PRICE_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubPriceCommandArguments[] = {
-  "provider id",
-  "rate label",
-  "issuer event id",
-  "current time",
-  "unit of measure",
-  "currency",
-  "price trailing digit and price tier",
-  "number of price tiers and register tier",
-  "start time",
-  "duration in minutes",
-  "price",
-  "price ratio",
-  "generation price",
-  "generation price ratio",
-  "alternate cost delivered",
-  "alternate cost unit",
-  "alternate cost trailing digit",
-  "number of block thresholds",
-  "price control",
-  "number of generation tiers",
-  "generation tier",
-  "extended number of price tiers",
-  "extended price tier",
-  "extended register tier",
-  NULL
-};
-#endif
-
-
-static void zclPricePubPriceMatrixCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_PRICE_MATRIX_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubPriceMatrixCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "start time",
-  "issuer tariff id",
-  "command index",
-  "number of commands",
-  "sub payload control",
-  "payload",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclPricePubTariffInfoCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_TARIFF_INFORMATION_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubTariffInfoCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "issuer tariff id",
-  "start time",
-  "tariff type charging scheme",
-  "tariff label",
-  "number of price tiers in use",
-  "number of block thresholds in use",
-  "unit of measure",
-  "currency",
-  "price trailing digit",
-  "standing charge",
-  "tier block mode",
-  "block threshold multiplier",
-  "block threshold divisor",
-  NULL
-};
-#endif
-
-
-static void zclPricePubTierLabelsCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_TIER_LABELS_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubTierLabelsCommandArguments[] = {
-  "provider id",
-  "issuer event id",
-  "issuer tariff id",
-  "command index",
-  "number of commands",
-  "number of labels",
-  "tier labels payload",
-  "",
-  NULL
-};
-#endif
-
-
-static void zclPricePubXFactorCommand(void) {
-  zclSimpleServerCommand( ZCL_PRICE_CLUSTER_ID,
-                          ZCL_PUBLISH_CONVERSION_FACTOR_COMMAND_ID);
-}
-
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclPricePubXFactorCommandArguments[] = {
-  "issuer event id",
-  "start time",
-  "conversion factor",
-  "conversion factor trailing digit",
-  NULL
-};
-#endif
-
-
 static void zclPriceScheduledCommand(void) {
   zclSimpleClientCommand( ZCL_PRICE_CLUSTER_ID,
                           ZCL_GET_SCHEDULED_PRICES_COMMAND_ID);
@@ -4380,7 +3628,6 @@ static const char * const zclPriceScheduledCommandArguments[] = {
 
 
 static EmberCommandEntry emberCommandZclPriceTable[] = {
-  emberCommandEntryActionWithDetails("cancel-tariff", zclPriceCancelTariffCommand, "wwu", "The CancelTariff command indicates that all data associated with a par ...", zclPriceCancelTariffCommandArguments),
   emberCommandEntryActionWithDetails("cpp-event-resp", zclPriceCppEventRespCommand, "wu", "The CPPEventResponse command is sent from a Client (IHD) to the ESI to ...", zclPriceCppEventRespCommandArguments),
   emberCommandEntryActionWithDetails("current", zclPriceCurrentCommand, "u", "The GetCurrentPrice command initiates a PublishPrice command for the c ...", zclPriceCurrentCommandArguments),
   emberCommandEntryActionWithDetails("get-billing-period", zclPriceGetBillingPeriodCommand, "wwuu", "The GetBillingPeriod command initiates one or more PublishBillingPerio ...", zclPriceGetBillingPeriodCommandArguments),
@@ -4397,20 +3644,6 @@ static EmberCommandEntry emberCommandZclPriceTable[] = {
   emberCommandEntryActionWithDetails("get-tariff-info", zclPriceGetTariffInfoCommand, "wwuu", "The GetTariffInformation command initiates a PublishTariffInformation  ...", zclPriceGetTariffInfoCommandArguments),
   emberCommandEntryActionWithDetails("get-tier-labels", zclPriceGetTierLabelsCommand, "w", "The GetTierLabels command allows a client to retrieve the tier labels  ...", zclPriceGetTierLabelsCommandArguments),
   emberCommandEntryActionWithDetails("price-ack", zclPricePriceAckCommand, "wwwu", "The PriceAcknowledgement command described provides the ability to ack ...", zclPricePriceAckCommandArguments),
-  emberCommandEntryActionWithDetails("pub-billing-period", zclPricePubBillingPeriodCommand, "wwwbuu", "The PublishBillingPeriod command is generated in response to receiving ...", zclPricePubBillingPeriodCommandArguments),
-  emberCommandEntryActionWithDetails("pub-block-period", zclPricePubBlockPeriodCommand, "www0uuuuu", "The PublishBlockPeriod command is generated in response to receiving a ...", zclPricePubBlockPeriodCommandArguments),
-  emberCommandEntryActionWithDetails("pub-block-threshold", zclPricePubBlockThresholdCommand, "wwwwuuub*", "The PublishBlockThreshold command is sent in response to a GetBlockThr ...", zclPricePubBlockThresholdCommandArguments),
-  emberCommandEntryActionWithDetails("pub-cal-val", zclPricePubCalValCommand, "wwwuu", "The PublishCalorificValue command is sent in response to a GetCalorifi ...", zclPricePubCalValCommandArguments),
-  emberCommandEntryActionWithDetails("pub-co2-val", zclPricePubCo2ValCommand, "wwwuwuu", "The PublishCO2Value command is sent in response to a GetCO2Value comma ...", zclPricePubCo2ValCommandArguments),
-  emberCommandEntryActionWithDetails("pub-consolidated-bill", zclPricePubConsolidatedBillCommand, "wwwbuuwvu", "The PublishConsolidatedBill command is used to make consolidated billi ...", zclPricePubConsolidatedBillCommandArguments),
-  emberCommandEntryActionWithDetails("pub-cpp-event", zclPricePubCppEventCommand, "wwwvuuu", "The PublishCPPEvent command is sent from an ESI to its price clients t ...", zclPricePubCppEventCommandArguments),
-  emberCommandEntryActionWithDetails("pub-credit-payment", zclPricePubCreditPaymentCommand, "wwwwuwwb", "The PublishCreditPayment command is used to update the credit payment  ...", zclPricePubCreditPaymentCommandArguments),
-  emberCommandEntryActionWithDetails("pub-currency-conversion", zclPricePubCurrencyConversionCommand, "wwwvvwuw", "The PublishCurrencyConversion command is sent in response to a GetCurr ...", zclPricePubCurrencyConversionCommandArguments),
-  emberCommandEntryActionWithDetails("pub-price", zclPricePubPriceCommand, "wbwwuvuuwvwuwuwuuuuuuuuu", "The PublishPrice command is generated in response to receiving a Get C ...", zclPricePubPriceCommandArguments),
-  emberCommandEntryActionWithDetails("pub-price-matrix", zclPricePubPriceMatrixCommand, "wwwwuuub*", "PublishPriceMatrix command is used to publish the Block Price Informat ...", zclPricePubPriceMatrixCommandArguments),
-  emberCommandEntryActionWithDetails("pub-tariff-info", zclPricePubTariffInfoCommand, "wwwwubuuuvuwu00", "The PublishTariffInformation command is sent in response to a GetTarif ...", zclPricePubTariffInfoCommandArguments),
-  emberCommandEntryActionWithDetails("pub-tier-labels", zclPricePubTierLabelsCommand, "wwwuuuu*", "The PublishTierLabels command is generated in response to receiving a  ...", zclPricePubTierLabelsCommandArguments),
-  emberCommandEntryActionWithDetails("pub-x-factor", zclPricePubXFactorCommand, "wwwu", "The PublishConversionFactor command is sent in response to a GetConver ...", zclPricePubXFactorCommandArguments),
   emberCommandEntryActionWithDetails("scheduled", zclPriceScheduledCommand, "wu", "The GetScheduledPrices command initiates a PublishPrice command for av ...", zclPriceScheduledCommandArguments),
   emberCommandEntryTerminator(),
 };
@@ -4610,16 +3843,6 @@ static const char * const zclTunnelingCloseCommandArguments[] = {
 #endif
 
 
-void zclTunnelingRandomToClientCommand(void);
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclTunnelingRandomToClientCommandArguments[] = {
-  "The two byte tunnel id",
-  "the length of random data to send to the client",
-  NULL
-};
-#endif
-
-
 void zclTunnelingRandomToServerCommand(void);
 #if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
 static const char * const zclTunnelingRandomToServerCommandArguments[] = {
@@ -4646,16 +3869,6 @@ static const char * const zclTunnelingRequestCommandArguments[] = {
 #endif
 
 
-void zclTunnelingTransferToClientCommand(void);
-#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
-static const char * const zclTunnelingTransferToClientCommandArguments[] = {
-  "The two byte tunnel id",
-  "data to transfer to the client",
-  NULL
-};
-#endif
-
-
 void zclTunnelingTransferToServerCommand(void);
 #if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
 static const char * const zclTunnelingTransferToServerCommandArguments[] = {
@@ -4668,10 +3881,8 @@ static const char * const zclTunnelingTransferToServerCommandArguments[] = {
 
 static EmberCommandEntry emberCommandZclTunnelingTable[] = {
   emberCommandEntryActionWithDetails("close", zclTunnelingCloseCommand, "v", "Client command used to close the tunnel with the serve ...", zclTunnelingCloseCommandArguments),
-  emberCommandEntryActionWithDetails("random-to-client", zclTunnelingRandomToClientCommand, "vv", "Send a random amount of data through a tunnel to the server (used for  ...", zclTunnelingRandomToClientCommandArguments),
   emberCommandEntryActionWithDetails("random-to-server", zclTunnelingRandomToServerCommand, "vv", "Send a random amount of data through a tunnel to the server (used for  ...", zclTunnelingRandomToServerCommandArguments),
   emberCommandEntryActionWithDetails("request", zclTunnelingRequestCommand, "uvuv", "RequestTunnel is the client command used to setup a tunnel association ...", zclTunnelingRequestCommandArguments),
-  emberCommandEntryActionWithDetails("transfer-to-client", zclTunnelingTransferToClientCommand, "vb", "Transfer data through a tunnel to the client (used for testing)", zclTunnelingTransferToClientCommandArguments),
   emberCommandEntryActionWithDetails("transfer-to-server", zclTunnelingTransferToServerCommand, "vb", "Transfer data through a tunnel to the server.", zclTunnelingTransferToServerCommandArguments),
   emberCommandEntryTerminator(),
 };
