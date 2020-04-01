@@ -425,7 +425,8 @@ CliCommands:compile,plugin ota-bootload info
 appPlugin:address-table,true
 
 appPlugin:aes-cmac,false
-appPlugin:aes-software,false
+appPlugin:aes-software,true
+
 appPlugin:antenna-cli,false
 appPlugin:barrier-control-server,false
 appPlugin:basic,true
@@ -439,7 +440,8 @@ appPlugin:button-joining,false
 appPlugin:calendar-client,false
 appPlugin:calendar-common,false
 appPlugin:calendar-server,false
-appPlugin:ccm-encryption,false
+appPlugin:ccm-encryption,true
+
 appPlugin:cjson,true
 
 appPlugin:coap-server,false
@@ -481,9 +483,9 @@ appPlugin:ezmode-commissioning,true
 appPlugin:ezsp,true
 
 appPlugin:ezsp-spi,false
-appPlugin:ezsp-uart,false
-appPlugin:ezsp-usb,true
+appPlugin:ezsp-uart,true
 
+appPlugin:ezsp-usb,false
 appPlugin:fem-control,false
 appPlugin:file-descriptor-dispatch,true
 
@@ -603,7 +605,8 @@ appPlugin:scenes-client,false
 appPlugin:secure-ezsp,false
 appPlugin:secure-ezsp-stub,true
 
-appPlugin:security-support,false
+appPlugin:security-support,true
+
 appPlugin:simple-clock,false
 appPlugin:simple-main,true
 
