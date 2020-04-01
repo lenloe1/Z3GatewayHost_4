@@ -19,6 +19,9 @@ Platform:pc
 # Setup configurations
 {setupId:additionalFiles
 }
+{setupId:bleGattConfigurator
+<?xml version="1.0" encoding="UTF-8"?><gatt gatt_caching="false" generic_attribute_service="false" header="gatt_db.h" name="Custom BLE GATT" out="gatt_db.c" prefix="gattdb_"/>
+}
 {setupId:boardHeader
 allowMissingHeader:false
 useHeaderInPlace:false
@@ -150,6 +153,10 @@ It involves the use of the following plugins:
 -DEM_AF_LINK_M
 -DEM_AF_LINK_PTHREAD
 }
+{setupId:mpsi
+- mappings
+- custom messages
+}
 {setupId:pluginService
 }
 {setupId:quizz
@@ -247,6 +254,7 @@ overrideClientCluster:0x0019,no
 overrideClientCluster:0x001A,no
 overrideClientCluster:0x001B,no
 overrideClientCluster:0x0020,yes
+overrideClientCluster:0x0025,yes
 overrideClientCluster:0x0100,no
 overrideClientCluster:0x0101,no
 overrideClientCluster:0x0102,no
@@ -270,11 +278,18 @@ overrideClientCluster:0x0502,no
 overrideClientCluster:0x0600,no
 overrideClientCluster:0x0601,no
 overrideClientCluster:0x0614,no
-overrideClientCluster:0x0700,no
-overrideClientCluster:0x0701,no
+overrideClientCluster:0x0700,yes
+overrideClientCluster:0x0701,yes
 overrideClientCluster:0x0702,yes
-overrideClientCluster:0x0703,no
-overrideClientCluster:0x0704,no
+overrideClientCluster:0x0703,yes
+overrideClientCluster:0x0704,yes
+overrideClientCluster:0x0705,yes
+overrideClientCluster:0x0706,yes
+overrideClientCluster:0x0707,yes
+overrideClientCluster:0x0708,yes
+overrideClientCluster:0x0709,yes
+overrideClientCluster:0x070A,yes
+overrideClientCluster:0x070B,yes
 overrideClientCluster:0x0800,no
 overrideClientCluster:0x0B00,no
 overrideClientCluster:0x0B01,yes
@@ -304,6 +319,7 @@ overrideServerCluster:0x0019,yes
 overrideServerCluster:0x001A,yes
 overrideServerCluster:0x001B,no
 overrideServerCluster:0x0020,no
+overrideServerCluster:0x0025,no
 overrideServerCluster:0x0100,no
 overrideServerCluster:0x0101,no
 overrideServerCluster:0x0102,no
@@ -321,6 +337,7 @@ overrideServerCluster:0x0403,no
 overrideServerCluster:0x0404,no
 overrideServerCluster:0x0405,no
 overrideServerCluster:0x0406,no
+overrideServerCluster:0x0424,yes
 overrideServerCluster:0x0500,no
 overrideServerCluster:0x0501,no
 overrideServerCluster:0x0502,no
@@ -332,6 +349,13 @@ overrideServerCluster:0x0701,no
 overrideServerCluster:0x0702,no
 overrideServerCluster:0x0703,no
 overrideServerCluster:0x0704,no
+overrideServerCluster:0x0705,no
+overrideServerCluster:0x0706,no
+overrideServerCluster:0x0707,no
+overrideServerCluster:0x0708,no
+overrideServerCluster:0x0709,no
+overrideServerCluster:0x070A,no
+overrideServerCluster:0x070B,no
 overrideServerCluster:0x0800,no
 overrideServerCluster:0x0B00,no
 overrideServerCluster:0x0B01,no
@@ -416,13 +440,15 @@ appPlugin:calendar-client,false
 appPlugin:calendar-common,false
 appPlugin:calendar-server,false
 appPlugin:ccm-encryption,false
-appPlugin:cjson,false
+appPlugin:cjson,true
+
 appPlugin:coap-server,false
 appPlugin:coexistence-cli,false
 appPlugin:color-control,false
 appPlugin:color-control-server,true
 
-appPlugin:command-relay,false
+appPlugin:command-relay,true
+
 appPlugin:comms-hub-function,false
 appPlugin:comms-hub-function-sub-ghz,false
 appPlugin:concentrator,true
@@ -434,7 +460,8 @@ appPlugin:device-database,false
 appPlugin:device-management-client,false
 appPlugin:device-management-server,false
 appPlugin:device-query-service,false
-appPlugin:device-table,false
+appPlugin:device-table,true
+
 appPlugin:diagnostic-server,false
 appPlugin:dmp-demo-ui,false
 appPlugin:dmp-ui-demo,false
@@ -454,9 +481,9 @@ appPlugin:ezmode-commissioning,true
 appPlugin:ezsp,true
 
 appPlugin:ezsp-spi,false
-appPlugin:ezsp-uart,true
+appPlugin:ezsp-uart,false
+appPlugin:ezsp-usb,true
 
-appPlugin:ezsp-usb,false
 appPlugin:fem-control,false
 appPlugin:file-descriptor-dispatch,true
 
@@ -468,7 +495,8 @@ appPlugin:gas-proxy-function,false
 appPlugin:gateway,true
 
 appPlugin:gateway-relay-coap,false
-appPlugin:gateway-relay-mqtt,false
+appPlugin:gateway-relay-mqtt,true
+
 appPlugin:gbcs-compatibility,false
 appPlugin:gbcs-device-log,false
 appPlugin:gbcs-gas-meter,false
@@ -548,7 +576,8 @@ appPlugin:ota-storage-posix-filesystem,true
 appPlugin:ota-storage-simple,false
 appPlugin:ota-storage-simple-eeprom,false
 appPlugin:ota-storage-simple-ram,false
-appPlugin:paho.mqtt.c,false
+appPlugin:paho.mqtt.c,true
+
 appPlugin:partner-link-key-exchange,false
 appPlugin:permit-join-manager,false
 appPlugin:poll-control-client,true
@@ -602,7 +631,8 @@ appPlugin:test-harness-z3,false
 appPlugin:throughput,false
 appPlugin:time-server,true
 
-appPlugin:transport-mqtt,false
+appPlugin:transport-mqtt,true
+
 appPlugin:trust-center-backup,false
 appPlugin:trust-center-keepalive,false
 appPlugin:trust-center-nwk-key-update-broadcast,true
