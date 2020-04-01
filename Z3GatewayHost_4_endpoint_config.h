@@ -223,22 +223,18 @@ const EmberAfGenericClusterFunction emberAfFuncArraySimpleMeteringClusterClient[
 #define EMBER_AF_GENERATED_PLUGIN_INIT_FUNCTION_DECLARATIONS \
   void emberAfPluginDeviceTableInitCallback(void); \
   void emberAfPluginTrustCenterNwkKeyUpdatePeriodicInitCallback(void); \
-  void emberAfPluginGatewayRelayMqttInitCallback(void); \
   void emberAfPluginCommandRelayInitCallback(void); \
   void emberAfPluginGreenPowerClientInitCallback(void); \
   void emberAfPluginReportingInitCallback(void); \
-  void emberAfPluginTransportMqttInitCallback(void); \
   void emberAfPluginCountersInitCallback(void); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_INIT_FUNCTION_CALLS \
   emberAfPluginDeviceTableInitCallback(); \
   emberAfPluginTrustCenterNwkKeyUpdatePeriodicInitCallback(); \
-  emberAfPluginGatewayRelayMqttInitCallback(); \
   emberAfPluginCommandRelayInitCallback(); \
   emberAfPluginGreenPowerClientInitCallback(); \
   emberAfPluginReportingInitCallback(); \
-  emberAfPluginTransportMqttInitCallback(); \
   emberAfPluginCountersInitCallback(); \
 
 
