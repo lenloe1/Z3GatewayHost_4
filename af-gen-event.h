@@ -18,9 +18,6 @@
   extern EmberEventControl emberAfPluginColorControlServerXyTransitionEventControl; \
   extern EmberEventControl emberAfPluginDeviceTableNewDeviceEventControl; \
   extern EmberEventControl emberAfPluginEzmodeCommissioningStateEventControl; \
-  extern EmberEventControl emberAfPluginGatewayRelayMqttHeartbeatEventControl; \
-  extern EmberEventControl emberAfPluginGatewayRelayMqttProcessCommandEventControl; \
-  extern EmberEventControl emberAfPluginGatewayRelayMqttStateUpdateEventControl; \
   extern EmberEventControl emberAfPluginGreenPowerClientChannelEventControl; \
   extern EmberEventControl emberAfPluginGreenPowerClientExitCommissioningEventControl; \
   extern EmberEventControl emberAfPluginIasZoneClientStateMachineEventControl; \
@@ -31,7 +28,6 @@
   extern EmberEventControl emberAfPluginScanDispatchScanEventControl; \
   extern EmberEventControl emberAfPluginTestHarnessFlashPageHashEventControl; \
   extern EmberEventControl emberAfPluginTestHarnessReadWriteAttributesTimeoutEventControl; \
-  extern EmberEventControl emberAfPluginTransportMqttBrokerReconnectEventControl; \
   extern EmberEventControl emberAfPluginTrustCenterNwkKeyUpdateBroadcastMyEventControl; \
   extern EmberEventControl emberAfPluginTrustCenterNwkKeyUpdatePeriodicMyEventControl; \
   extern EmberEventControl emberAfPluginTrustCenterNwkKeyUpdateUnicastMyEventControl; \
@@ -41,9 +37,6 @@
   extern void emberAfPluginColorControlServerXyTransitionEventHandler(void); \
   extern void emberAfPluginDeviceTableNewDeviceEventHandler(void); \
   extern void emberAfPluginEzmodeCommissioningStateEventHandler(void); \
-  extern void emberAfPluginGatewayRelayMqttHeartbeatEventHandler(void); \
-  extern void emberAfPluginGatewayRelayMqttProcessCommandEventHandler(void); \
-  extern void emberAfPluginGatewayRelayMqttStateUpdateEventHandler(void); \
   extern void emberAfPluginGreenPowerClientChannelEventHandler(void); \
   extern void emberAfPluginGreenPowerClientExitCommissioningEventHandler(void); \
   extern void emberAfPluginIasZoneClientStateMachineEventHandler(void); \
@@ -54,7 +47,6 @@
   extern void emberAfPluginScanDispatchScanEventHandler(void); \
   extern void emberAfPluginTestHarnessFlashPageHashEventHandler(void); \
   extern void emberAfPluginTestHarnessReadWriteAttributesTimeoutEventHandler(void); \
-  extern void emberAfPluginTransportMqttBrokerReconnectEventHandler(void); \
   extern void emberAfPluginTrustCenterNwkKeyUpdateBroadcastMyEventHandler(void); \
   extern void emberAfPluginTrustCenterNwkKeyUpdatePeriodicMyEventHandler(void); \
   extern void emberAfPluginTrustCenterNwkKeyUpdateUnicastMyEventHandler(void); \
@@ -83,9 +75,6 @@
   { &emberAfPluginColorControlServerXyTransitionEventControl, emberAfPluginColorControlServerXyTransitionEventHandler }, \
   { &emberAfPluginDeviceTableNewDeviceEventControl, emberAfPluginDeviceTableNewDeviceEventHandler }, \
   { &emberAfPluginEzmodeCommissioningStateEventControl, emberAfPluginEzmodeCommissioningStateEventHandler }, \
-  { &emberAfPluginGatewayRelayMqttHeartbeatEventControl, emberAfPluginGatewayRelayMqttHeartbeatEventHandler }, \
-  { &emberAfPluginGatewayRelayMqttProcessCommandEventControl, emberAfPluginGatewayRelayMqttProcessCommandEventHandler }, \
-  { &emberAfPluginGatewayRelayMqttStateUpdateEventControl, emberAfPluginGatewayRelayMqttStateUpdateEventHandler }, \
   { &emberAfPluginGreenPowerClientChannelEventControl, emberAfPluginGreenPowerClientChannelEventHandler }, \
   { &emberAfPluginGreenPowerClientExitCommissioningEventControl, emberAfPluginGreenPowerClientExitCommissioningEventHandler }, \
   { &emberAfPluginIasZoneClientStateMachineEventControl, emberAfPluginIasZoneClientStateMachineEventHandler }, \
@@ -96,7 +85,6 @@
   { &emberAfPluginScanDispatchScanEventControl, emberAfPluginScanDispatchScanEventHandler }, \
   { &emberAfPluginTestHarnessFlashPageHashEventControl, emberAfPluginTestHarnessFlashPageHashEventHandler }, \
   { &emberAfPluginTestHarnessReadWriteAttributesTimeoutEventControl, emberAfPluginTestHarnessReadWriteAttributesTimeoutEventHandler }, \
-  { &emberAfPluginTransportMqttBrokerReconnectEventControl, emberAfPluginTransportMqttBrokerReconnectEventHandler }, \
   { &emberAfPluginTrustCenterNwkKeyUpdateBroadcastMyEventControl, emberAfPluginTrustCenterNwkKeyUpdateBroadcastMyEventHandler }, \
   { &emberAfPluginTrustCenterNwkKeyUpdatePeriodicMyEventControl, emberAfPluginTrustCenterNwkKeyUpdatePeriodicMyEventHandler }, \
   { &emberAfPluginTrustCenterNwkKeyUpdateUnicastMyEventControl, emberAfPluginTrustCenterNwkKeyUpdateUnicastMyEventHandler }, \
@@ -113,9 +101,6 @@
   "Color Control Cluster Server Plugin XyTransition",  \
   "Device Table Plugin NewDevice",  \
   "EZ-Mode Commissioning Plugin State",  \
-  "Gateway Relay Mqtt Plugin Heartbeat",  \
-  "Gateway Relay Mqtt Plugin ProcessCommand",  \
-  "Gateway Relay Mqtt Plugin StateUpdate",  \
   "Green Power Client Plugin Channel",  \
   "Green Power Client Plugin ExitCommissioning",  \
   "IAS Zone Client Plugin StateMachine",  \
@@ -126,7 +111,6 @@
   "Scan Dispatch Plugin Scan",  \
   "Test Harness Plugin FlashPageHash",  \
   "Test Harness Plugin ReadWriteAttributesTimeout",  \
-  "Gateway MQTT Transport Plugin BrokerReconnect",  \
   "Trust Center Network Key Update Broadcast Plugin My",  \
   "Trust Center Network Key Update Periodic Plugin My",  \
   "Trust Center Network Key Update Unicast Plugin My",  \
