@@ -9,8 +9,6 @@
 #include EMBER_AF_API_NETWORK_STEERING
 #include PLATFORM_HEADER
 #include "app/framework/plugin/ota-server-policy/ota-server-policy.h"
-#include CONFIGURATION_HEADER
-#include EMBER_AF_API_TRANSPORT_MQTT
 
 
 
@@ -158,6 +156,25 @@ bool emberAfKeyEstablishmentClusterClientCommandReceivedCallback(EmberAfClusterC
 void emberAfClusterInitCallback(uint8_t endpoint,
                                 EmberAfClusterId clusterId)
 {
+}
+
+/** @brief Configure Reporting Response
+ *
+ * This function is called by the application framework when a Configure
+ * Reporting Response command is received from an external device.  The
+ * application should return true if the message was processed or false if it
+ * was not.
+ *
+ * @param clusterId The cluster identifier of this response.  Ver.: always
+ * @param buffer Buffer containing the list of attribute status records.  Ver.:
+ * always
+ * @param bufLen The length in bytes of the list.  Ver.: always
+ */
+bool emberAfConfigureReportingResponseCallback(EmberAfClusterId clusterId,
+                                               uint8_t *buffer,
+                                               uint16_t bufLen)
+{
+  return false;
 }
 
 /** @brief Default Response
@@ -895,6 +912,34 @@ EmberAfStatus emberAfScenesClusterMakeInvalidCallback(uint8_t endpoint)
   return EMBER_ZCL_STATUS_UNSUP_CLUSTER_COMMAND;
 }
 
+/** @brief Message Sent
+ *
+ * This function is called by the application framework from the message sent
+ * handler, when it is informed by the stack regarding the message sent status.
+ * All of the values passed to the emberMessageSentHandler are passed on to this
+ * callback. This provides an opportunity for the application to verify that its
+ * message has been sent successfully and take the appropriate action. This
+ * callback should return a bool value of true or false. A value of true
+ * indicates that the message sent notification has been handled and should not
+ * be handled by the application framework.
+ *
+ * @param type   Ver.: always
+ * @param indexOrDestination   Ver.: always
+ * @param apsFrame   Ver.: always
+ * @param msgLen   Ver.: always
+ * @param message   Ver.: always
+ * @param status   Ver.: always
+ */
+bool emberAfMessageSentCallback(EmberOutgoingMessageType type,
+                                uint16_t indexOrDestination,
+                                EmberApsFrame* apsFrame,
+                                uint16_t msgLen,
+                                uint8_t* message,
+                                EmberStatus status)
+{
+  return false;
+}
+
 /** @brief Ncp Init
  *
  * This function is called when the network coprocessor is being initialized,
@@ -1339,6 +1384,15 @@ void emberAfPluginColorControlServerComputePwmFromXyCallback(uint8_t endpoint)
 {
 }
 
+/** @brief Changed
+ *
+ * Called when relays rules are added or removed.
+ *
+ */
+void emberAfPluginCommandRelayChangedCallback(void)
+{
+}
+
 /** @brief Broadcast Sent
  *
  * This function is called when a new MTORR broadcast has been successfully
@@ -1356,6 +1410,25 @@ void emberAfPluginConcentratorBroadcastSentCallback(void)
  * @param type The counter that rolled over Ver.: always
  */
 void emberAfPluginCountersRolloverCallback(EmberCounterType type)
+{
+}
+
+/** @brief Cleared
+ *
+ * This callback is called when a device table has been cleared.
+ *
+ */
+void emberAfPluginDeviceTableClearedCallback(void)
+{
+}
+
+/*
+ *
+ * Called when a device leaves.
+ *
+ *@param newNodeEui64:  EUI64 of the device that left.
+ */
+void emberAfPluginDeviceTableDeviceLeftCallback(EmberEUI64 newNodeEui64)
 {
 }
 
@@ -1387,6 +1460,38 @@ void emberAfPluginDeviceTableIndexRemovedCallback(uint16_t currentIndex)
  *
  */
 void emberAfPluginDeviceTableInitialized(void)
+{
+}
+
+/** @brief NewDevice
+ *
+ * This callback is called when a new device joins the gateway.
+ *
+ * @param uui64   Ver.: always
+ */
+void emberAfPluginDeviceTableNewDeviceCallback(EmberEUI64 eui64)
+{
+}
+
+/** @brief Rejoin device
+ *
+ * Called when a device rejoins.
+ *
+ *@param newNodeEui64:  EUI64 of the rejoined device.
+ */
+void emberAfPluginDeviceTableRejoinDeviceCallback(EmberEUI64 newNodeEui64)
+{
+}
+
+/** @brief StateChange
+ *
+ * This callback is called when a device's state changes.
+ *
+ * @param nodeId   Ver.: always
+ * @param state   Ver.: always
+ */
+void emberAfPluginDeviceTableStateChangeCallback(EmberNodeId nodeId,
+                                                 uint8_t state)
 {
 }
 
@@ -1572,6 +1677,22 @@ void emberAfPluginOnOffClusterServerPostInitCallback(uint8_t endpoint)
 {
 }
 
+/** @brief OTA Server Block Sent Callback
+ *
+ * This function will be called when a block is sent to a device.
+ *
+ * @param actualLength      Ver.: always
+ * @param manufacturerId    Ver.: always
+ * @param imageTypeId       Ver.: always
+ * @param firmwareVersion   Ver.: always
+ */
+void emberAfPluginOtaServerBlockSentCallback(uint8_t actualLength,
+                                             uint16_t manufacturerId,
+                                             uint16_t imageTypeId,
+                                             uint32_t firmwareVersion)
+{
+}
+
 
 /** @brief GetClientDelayUnits
  *
@@ -1595,6 +1716,43 @@ uint8_t emberAfPluginOtaServerPolicyGetClientDelayUnits(EmberNodeId clientNodeId
                                                         EmberEUI64 clientEui64)
 {
   return OTA_SERVER_DISCOVER_CLIENT_DELAY_UNITS;
+}
+
+/** @brief OTA Server Update Complete Callback
+ *
+ * This function will be called when an OTA update has finished.
+ *
+ * @param manufacturerId  ManufacturerId.
+ * @param imageTypeId  Image Type Id.
+ * @param firmwareVersion  Firmware Version.
+ * @param source  Source node id.
+ * @param status  Status of update.
+ */
+void emberAfPluginOtaServerUpdateCompleteCallback(uint16_t manufacturerId,
+                                                  uint16_t imageTypeId,
+                                                  uint32_t firmwareVersion,
+                                                  EmberNodeId source,
+                                                  uint8_t status)
+{
+}
+
+
+/** @brief UpdateStarted
+ *
+ * Called when an OTA upgrade starts.
+ *
+ * @param manufacturerId   Ver.: always
+ * @param imageTypeId      Ver.: always
+ * @param firmwareVersion  Ver.: always
+ * @param maxDataSize      Ver.: always
+ * @param offset           Ver.: always
+ */
+void emberAfPluginOtaServerUpdateStartedCallback(uint16_t manufacturerId,
+                                                 uint16_t imageTypeId,
+                                                 uint32_t firmwareVersion,
+                                                 uint8_t maxDataSize,
+                                                 uint32_t offset)
+{
 }
 
 /** @brief Configured
@@ -1774,6 +1932,59 @@ bool emberAfPreCommandReceivedCallback(EmberAfClusterCommand* cmd)
   return false;
 }
 
+/** @brief Pre Message Received
+ *
+ * This callback is the first in the Application Framework's message processing
+ * chain. The Application Framework calls it when a message has been received
+ * over the air but has not yet been parsed by the ZCL command-handling code. If
+ * you wish to parse some messages that are completely outside the ZCL
+ * specification or are not handled by the Application Framework's command
+ * handling code, you should intercept them for parsing in this callback. 
+     
+ *   This callback returns a Boolean value indicating whether or not the message
+ * has been handled. If the callback returns a value of true, then the
+ * Application Framework assumes that the message has been handled and it does
+ * nothing else with it. If the callback returns a value of false, then the
+ * application framework continues to process the message as it would with any
+ * incoming message.
+        Note: 	This callback receives a pointer to an
+ * incoming message struct. This struct allows the application framework to
+ * provide a unified interface between both Host devices, which receive their
+ * message through the ezspIncomingMessageHandler, and SoC devices, which
+ * receive their message through emberIncomingMessageHandler.
+ *
+ * @param incomingMessage   Ver.: always
+ */
+bool emberAfPreMessageReceivedCallback(EmberAfIncomingMessage* incomingMessage)
+{
+  return false;
+}
+
+/** @brief Pre Message Send
+ *
+ * This function is called by the framework when it is about to pass a message
+ * to the stack primitives for sending.   This message may or may not be ZCL,
+ * ZDO, or some other protocol.  This is called prior to
+        any ZigBee
+ * fragmentation that may be done.  If the function returns true it is assumed
+ * the callback has consumed and processed the message.  The callback must also
+ * set the EmberStatus status code to be passed back to the caller.  The
+ * framework will do no further processing on the message.
+        If the
+ * function returns false then it is assumed that the callback has not processed
+ * the mesasge and the framework will continue to process accordingly.
+ *
+ * @param messageStruct The structure containing the parameters of the APS
+ * message to be sent.  Ver.: always
+ * @param status A pointer to the status code value that will be returned to the
+ * caller.  Ver.: always
+ */
+bool emberAfPreMessageSendCallback(EmberAfMessageStruct* messageStruct,
+                                   EmberStatus* status)
+{
+  return false;
+}
+
 /** @brief Pre Ncp Reset
  *
  * This function will be called prior to the reset of the NCP by the host.
@@ -1799,6 +2010,43 @@ bool emberAfPreZDOMessageReceivedCallback(EmberNodeId emberNodeId,
                                           EmberApsFrame* apsFrame,
                                           uint8_t* message,
                                           uint16_t length)
+{
+  return false;
+}
+
+/** @brief Read Attributes Response
+ *
+ * This function is called by the application framework when a Read Attributes
+ * Response command is received from an external device.  The application should
+ * return true if the message was processed or false if it was not.
+ *
+ * @param clusterId The cluster identifier of this response.  Ver.: always
+ * @param buffer Buffer containing the list of read attribute status records. 
+ * Ver.: always
+ * @param bufLen The length in bytes of the list.  Ver.: always
+ */
+bool emberAfReadAttributesResponseCallback(EmberAfClusterId clusterId,
+                                           uint8_t *buffer,
+                                           uint16_t bufLen)
+{
+  return false;
+}
+
+/** @brief Read Reporting Configuration Response
+ *
+ * This function is called by the application framework when a Read Reporting
+ * Configuration Response command is received from an external device.  The
+ * application should return true if the message was processed or false if it
+ * was not.
+ *
+ * @param clusterId The cluster identifier of this response.  Ver.: always
+ * @param buffer Buffer containing the list of attribute reporting configuration
+ * records.  Ver.: always
+ * @param bufLen The length in bytes of the list.  Ver.: always
+ */
+bool emberAfReadReportingConfigurationResponseCallback(EmberAfClusterId clusterId,
+                                                       uint8_t *buffer,
+                                                       uint16_t bufLen)
 {
   return false;
 }
@@ -1908,6 +2156,24 @@ void emberAfRemoveFromCurrentAppTasksCallback(EmberAfApplicationTask tasks)
 void emberAfScenesClusterRemoveScenesInGroupCallback(uint8_t endpoint,
                                                      uint16_t groupId)
 {
+}
+
+/** @brief Report Attributes
+ *
+ * This function is called by the application framework when a Report Attributes
+ * command is received from an external device.  The application should return
+ * true if the message was processed or false if it was not.
+ *
+ * @param clusterId The cluster identifier of this command.  Ver.: always
+ * @param buffer Buffer containing the list of attribute report records.  Ver.:
+ * always
+ * @param bufLen The length in bytes of the list.  Ver.: always
+ */
+bool emberAfReportAttributesCallback(EmberAfClusterId clusterId,
+                                     uint8_t *buffer,
+                                     uint16_t bufLen)
+{
+  return false;
 }
 
 /** @brief Scan Error
