@@ -492,6 +492,9 @@
 // Use this macro to check if EZSP Secure Protocol Stub plugin is included
 #define EMBER_AF_PLUGIN_SECURE_EZSP_STUB
 
+// Use this macro to check if Security Support plugin is included
+#define EMBER_AF_PLUGIN_SECURITY_SUPPORT
+
 // Use this macro to check if Simple Main plugin is included
 #define EMBER_AF_PLUGIN_SIMPLE_MAIN
 
