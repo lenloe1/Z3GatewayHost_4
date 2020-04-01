@@ -44,26 +44,22 @@ void emAfResetAttributes(uint8_t endpointId)
 bool emberAfPreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Global
 bool emAfPluginCommandRelayPreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Plugin: command-relay
 bool emAfPluginDeviceTablePreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Plugin: device-table
-bool emberAfPluginGatewayRelayMqttPreCommandReceivedCallback(EmberAfClusterCommand* cmd);  // Plugin: gateway-relay-mqtt
 
 bool emAfPreCommandReceived(EmberAfClusterCommand* cmd)
 {
   return (emberAfPreCommandReceivedCallback(cmd)  /* Global */
           || emAfPluginCommandRelayPreCommandReceivedCallback(cmd)  /* Plugin: command-relay */
-          || emAfPluginDeviceTablePreCommandReceivedCallback(cmd)  /* Plugin: device-table */
-          || emberAfPluginGatewayRelayMqttPreCommandReceivedCallback(cmd)  /* Plugin: gateway-relay-mqtt */);
+          || emAfPluginDeviceTablePreCommandReceivedCallback(cmd)  /* Plugin: device-table */);
 }
 
 // PreZDOMessageReceived function declarations.
 bool emberAfPreZDOMessageReceivedCallback(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length);  // Global
 bool emAfPluginDeviceTablePreZDOMessageReceived(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length);  // Plugin: device-table
-bool emberAfPluginGatewayRelayMqttPreZDOMessageReceivedCallback(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length);  // Plugin: gateway-relay-mqtt
 
 bool emAfPreZDOMessageReceived(EmberNodeId emberNodeId,EmberApsFrame* apsFrame,uint8_t* message,uint16_t length)
 {
   return (emberAfPreZDOMessageReceivedCallback(emberNodeId, apsFrame, message, length)  /* Global */
-          || emAfPluginDeviceTablePreZDOMessageReceived(emberNodeId, apsFrame, message, length)  /* Plugin: device-table */
-          || emberAfPluginGatewayRelayMqttPreZDOMessageReceivedCallback(emberNodeId, apsFrame, message, length)  /* Plugin: gateway-relay-mqtt */);
+          || emAfPluginDeviceTablePreZDOMessageReceived(emberNodeId, apsFrame, message, length)  /* Plugin: device-table */);
 }
 
 // RetrieveAttributeAndCraftResponse function declarations.
