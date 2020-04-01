@@ -166,13 +166,6 @@
 #define EMBER_CALLBACK_OTA_SERVER_BLOCK_SIZE
 #define EMBER_CALLBACK_OTA_SERVER_UPGRADE_END_REQUEST
 #define EMBER_CALLBACK_OTA_PAGE_REQUEST_SERVER_POLICY
-#define EMBER_CALLBACK_READ_ATTRIBUTES_RESPONSE
-#define EMBER_CALLBACK_REPORT_ATTRIBUTES_RESPONSE
-#define EMBER_CALLBACK_CONFIGURE_REPORTING_RESPONSE
-#define EMBER_CALLBACK_READ_REPORTING_CONFIGURATION_RESPONSE
-#define EMBER_CALLBACK_MSG_SENT
-#define EMBER_CALLBACK_PRE_MSG
-#define EMBER_CALLBACK_PRE_MESSAGE_SEND
 #define EMBER_CALLBACK_OTA_BOOTLOAD_CLUSTER_OTA_BOOTLOAD_CLUSTER_SERVER_INIT
 #define EMBER_CALLBACK_OTA_BOOTLOAD_CLUSTER_OTA_BOOTLOAD_CLUSTER_SERVER_TICK
 #define EMBER_CALLBACK_OTA_SERVER_INCOMING_MESSAGE_RAW
@@ -358,9 +351,6 @@
 #define EMBER_AF_PLUGIN_GATEWAY_TCP_PORT_OFFSET 4900
 #define EMBER_AF_PLUGIN_GATEWAY_MAX_WAIT_FOR_EVENT_TIMEOUT_MS 0xFFFFFFFF
 
-// Use this macro to check if Gateway Relay Mqtt plugin is included
-#define EMBER_AF_PLUGIN_GATEWAY_RELAY_MQTT
-
 // Use this macro to check if Green Power Client plugin is included
 #define EMBER_AF_PLUGIN_GREEN_POWER_CLIENT
 #define EZSP_APPLICATION_HAS_GPEP_INCOMING_MESSAGE_HANDLER
@@ -470,9 +460,6 @@
 // Use this macro to check if OTA POSIX Filesystem Storage Module plugin is included
 #define EMBER_AF_PLUGIN_OTA_STORAGE_POSIX_FILESYSTEM
 
-// Use this macro to check if Paho MQTT plugin is included
-#define EMBER_AF_PLUGIN____________
-
 // Use this macro to check if Poll Control Client Cluster plugin is included
 #define EMBER_AF_PLUGIN_POLL_CONTROL_CLIENT
 // User options for plugin Poll Control Client Cluster
@@ -513,15 +500,6 @@
 // Use this macro to check if Time Server Cluster plugin is included
 #define EMBER_AF_PLUGIN_TIME_SERVER
 // User options for plugin Time Server Cluster
-
-// Use this macro to check if Gateway MQTT Transport plugin is included
-#define EMBER_AF_PLUGIN_TRANSPORT_MQTT
-// User options for plugin Gateway MQTT Transport
-#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_BROKER_ADDRESS "tcp://localhost:1883"
-#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_BROKER_ADDRESS_LENGTH (20)
-#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_QOS QO_S2_EXACTLY_ONCE
-#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_CLIENT_ID_PREFIX "gw"
-#define EMBER_AF_PLUGIN_TRANSPORT_MQTT_CLIENT_ID_PREFIX_LENGTH (2)
 
 // Use this macro to check if Trust Center Network Key Update Broadcast plugin is included
 #define EMBER_AF_PLUGIN_TRUST_CENTER_NWK_KEY_UPDATE_BROADCAST
@@ -591,9 +569,6 @@
 
 // API ezsp-secure from EZSP Secure Protocol Stub plugin
 #define EMBER_AF_API_EZSP_SECURE "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/util/ezsp/secure-ezsp-protocol.h"
-
-// API transport-mqtt from Gateway MQTT Transport plugin
-#define EMBER_AF_API_TRANSPORT_MQTT "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/util/plugin/plugin-common/transport-mqtt/transport-mqtt.h"
 
 // API crc from Unix Library plugin
 #define EMBER_AF_API_CRC "../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/platform/base/hal/micro/crc.h"
