@@ -19,8 +19,6 @@
 #include EMBER_AF_API_NETWORK_STEERING
 #include PLATFORM_HEADER
 #include "app/framework/plugin/ota-server-policy/ota-server-policy.h"
-#include CONFIGURATION_HEADER
-#include EMBER_AF_API_TRANSPORT_MQTT
 
 
 
@@ -26726,38 +26724,6 @@ void emberAfPluginConcentratorBroadcastSentCallback(void);
  */
 void emberAfPluginOnOffClusterServerPostInitCallback(uint8_t endpoint);
 /** @} END On/Off Server Cluster Plugin Callbacks */
-
-
-/** @name Gateway MQTT Transport Plugin Callbacks */
-// @{
-
-/** @brief MQTT client state is changed.
- *
- * This function is called when the state of the MQTT client changes.
- *
- * @param state Contains the new and current EmberAfPluginTransportMqttState
- * state.
- */
-void emberAfPluginTransportMqttStateChangedCallback(EmberAfPluginTransportMqttState state);
-/** @brief MQTT message arrived.
- *
- * This function is called when the MQTT client for the gateway receives
- * an incoming message on a topic. If the message is processed by the application,
- * return true. If the message is not processed, return false. This
- * function is called on a separate thread, so no stack calls should be made
- * within the implementation of this function. Instead, use a global variable in
- * that function to communicate the message arrival to a stack event or timer
- * running from the main loop.
- *
- * @param topic A string containing the topic for the message that arrived. While
- * the underlying MQTT libraries allow NULL characters in a topic, NULL characters
- * are not supported in this implementation so the `topic` parameter can be
- * assumed to be NULL terminated.
- * @param payload A string containing the payload for the message that arrived.
- */
-bool emberAfPluginTransportMqttMessageArrivedCallback(const char* topic,
-                                                      const char* payload);
-/** @} END Gateway MQTT Transport Plugin Callbacks */
 
 
 /** @name Update TC Link Key Plugin Callbacks */
