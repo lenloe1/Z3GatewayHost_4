@@ -306,6 +306,8 @@ APPLICATION_FILES= \
   ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin/reporting/reporting-default-configuration.c \
   ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin/scan-dispatch/scan-dispatch.c \
   ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/util/ezsp/secure-ezsp-stub.c \
+  ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin-host/security-support/security-support.c \
+  ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/tool/random/random-linux.c \
   ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin/simple-main/simple-main.c \
   ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin/simple-metering-client/simple-metering-client.c \
   ../../../../../SiliconLabs/SimplicityStudio/v4_3/developer/sdks/gecko_sdk_suite/v2.7/protocol/zigbee/app/framework/plugin/simple-metering-client/simple-metering-client-cli.c \
