@@ -144,7 +144,7 @@
 #define EMBER_AF_HAS_COORDINATOR_NETWORK
 #define EMBER_AF_HAS_ROUTER_NETWORK
 #define EMBER_AF_HAS_RX_ON_WHEN_IDLE_NETWORK
-#define EMBER_AF_TX_POWER_MODE EMBER_TX_POWER_MODE_DEFAULT
+#define EMBER_AF_TX_POWER_MODE EMBER_TX_POWER_MODE_USE_TOKEN
 #define EMBER_AF_ENABLE_TX_ZDO
 
 /**** Callback Section ****/
@@ -285,8 +285,18 @@
 #define EMBER_AF_PLUGIN_ADDRESS_TABLE_SIZE 2
 #define EMBER_AF_PLUGIN_ADDRESS_TABLE_TRUST_CENTER_CACHE_SIZE 2
 
+// Use this macro to check if AES (Software) plugin is included
+#define EMBER_AF_PLUGIN_AES_SOFTWARE
+// User options for plugin AES (Software)
+
 // Use this macro to check if Basic Server Cluster plugin is included
 #define EMBER_AF_PLUGIN_BASIC
+
+// Use this macro to check if CCM* Encryption plugin is included
+#define EMBER_AF_PLUGIN_CCM_ENCRYPTION
+// User options for plugin CCM* Encryption
+#define EMBER_AF_PLUGIN_CCM_ENCRYPTION_SOFTWARE_CCM
+#define USE_SOFTWARE_CCM
 
 // Use this macro to check if cJSON plugin is included
 #define EMBER_AF_PLUGIN_CJSON
